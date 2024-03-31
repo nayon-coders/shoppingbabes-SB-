@@ -130,7 +130,7 @@ class AppConstants {
   static const String otpVResendForDigitalProduct = '/api/v1/customer/order/digital-product-download-otp-resend';
 static const String otpVerificationForDigitalProduct = '/api/v1/customer/order/digital-product-download-otp-verify';
 
-
+ static const String shipingValidity = '/api/v4/proceed-to-payment';
 
   static const String getCompareList = '/api/v1/customer/compare/list';
   static const String addToCompareList = '/api/v1/customer/compare/product-store';

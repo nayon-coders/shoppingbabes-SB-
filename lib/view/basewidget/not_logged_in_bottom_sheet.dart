@@ -7,7 +7,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_button.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/auth/auth_screen.dart';
 
 class NotLoggedInBottomSheet extends StatelessWidget {
-  const NotLoggedInBottomSheet({Key? key}) : super(key: key);
+  const NotLoggedInBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

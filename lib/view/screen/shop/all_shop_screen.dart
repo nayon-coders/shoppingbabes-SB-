@@ -9,7 +9,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/top_seller_v
 class AllTopSellerScreen extends StatelessWidget {
   final TopSellerModel? topSeller;
   final String title;
-  const AllTopSellerScreen({Key? key, required this.topSeller, required this.title}) : super(key: key);
+  const AllTopSellerScreen({super.key, required this.topSeller, required this.title});
   @override
   Widget build(BuildContext context) {
 

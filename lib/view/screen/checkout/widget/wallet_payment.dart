@@ -12,7 +12,7 @@ class WalletPayment extends StatelessWidget {
   final double? currentBalance;
 
 
-  const WalletPayment({Key? key,  this.rotateAngle = 0,  required this.onTap, this.orderAmount, this.currentBalance}) : super(key: key);
+  const WalletPayment({super.key,  this.rotateAngle = 0,  required this.onTap, this.orderAmount, this.currentBalance});
 
   @override
   Widget build(BuildContext context) {

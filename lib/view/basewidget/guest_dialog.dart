@@ -6,7 +6,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/auth/auth_screen.dart';
 
 class GuestDialog extends StatelessWidget {
-  const GuestDialog({Key? key}) : super(key: key);
+  const GuestDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

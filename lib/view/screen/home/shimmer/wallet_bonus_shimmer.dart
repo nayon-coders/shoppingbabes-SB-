@@ -9,7 +9,7 @@ import 'package:shimmer/shimmer.dart';
 
 class WalletBonusListShimmer extends StatelessWidget {
 
-  const WalletBonusListShimmer({Key? key, }) : super(key: key);
+  const WalletBonusListShimmer({super.key, });
 
   @override
   Widget build(BuildContext context) {

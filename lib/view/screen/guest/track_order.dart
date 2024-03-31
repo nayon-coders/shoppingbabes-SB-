@@ -12,7 +12,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/order/order_details_scre
 import 'package:provider/provider.dart';
 
 class GuestTrackOrderScreen extends StatefulWidget {
-  const GuestTrackOrderScreen({Key? key}) : super(key: key);
+  const GuestTrackOrderScreen({super.key});
 
   @override
   State<GuestTrackOrderScreen> createState() => _GuestTrackOrderScreenState();

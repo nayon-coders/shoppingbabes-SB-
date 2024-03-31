@@ -47,19 +47,31 @@ class ProfileProvider extends ChangeNotifier {
         _isLoading = true;
       }
     ApiResponse apiResponse = await profileRepo!.getAllAddress();
-    if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      print("get locaton list status === ${apiResponse.response!.statusCode}");
+
+      if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       _addressList = [];
       _billingAddressList =[];
       _shippingAddressList =[];
       _isLoading = false;
       apiResponse.response!.data.forEach((address) {
-        AddressModel addressModel = AddressModel.fromJson(address);
-        if(addressModel.isBilling == 1){
+        print("get locaton list === ${address}");
+
+
+
+      AddressModel addressModel = AddressModel.fromJson(address);
+      print("address model === ${addressModel.address}");
+        if(addressModel.isBilling == true){
+          print("address model isBilling 1 === ${addressModel.isBilling}");
           _billingAddressList.add(addressModel);
-        }else if(addressModel.isBilling == 0){
+        }else if(addressModel.isBilling == false){
+          print("address model isBilling 0=== ${addressModel.isBilling}");
           _addressList.add(addressModel);
-        }
+        }else{
+          print("address model isBilling 0=== ${addressModel.isBilling}");
           _shippingAddressList.add(addressModel);
+        }
+
       });
     } else {
       _isLoading = false;

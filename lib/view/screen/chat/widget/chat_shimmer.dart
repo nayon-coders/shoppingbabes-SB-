@@ -3,7 +3,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ChatShimmer extends StatelessWidget {
-  const ChatShimmer({Key? key}) : super(key: key);
+  const ChatShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

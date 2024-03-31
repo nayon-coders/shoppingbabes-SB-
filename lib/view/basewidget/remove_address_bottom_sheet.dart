@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 class RemoveFromAddressBottomSheet extends StatelessWidget {
   final int addressId;
   final int index;
-  const RemoveFromAddressBottomSheet({Key? key, required this.addressId, required this.index}) : super(key: key);
+  const RemoveFromAddressBottomSheet({super.key, required this.addressId, required this.index});
 
   @override
   Widget build(BuildContext context) {

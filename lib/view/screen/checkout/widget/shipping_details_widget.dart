@@ -13,7 +13,8 @@ import 'package:provider/provider.dart';
 class ShippingDetailsWidget extends StatelessWidget {
   final bool hasPhysical;
   final bool billingAddress;
-  const ShippingDetailsWidget({Key? key, required this.hasPhysical, required this.billingAddress}) : super(key: key);
+  final bool isRider;
+  const ShippingDetailsWidget({super.key, required this.hasPhysical, required this.billingAddress, this.isRider = false});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class ShippingDetailsWidget extends StatelessWidget {
 
                                   InkWell(
                                     onTap: () => Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (BuildContext context) => const SavedAddressListScreen())),
+                                        MaterialPageRoute(builder: (BuildContext context) =>  SavedAddressListScreen(isRider: isRider))),
                                     child: SizedBox(width: 20, child: Image.asset(Images.edit, scale: 3)),
                                   ),
 
@@ -147,7 +148,7 @@ class ShippingDetailsWidget extends StatelessWidget {
 class AddressInfoItem extends StatelessWidget {
   final String? icon;
   final String? title;
-  const AddressInfoItem({Key? key, this.icon, this.title}) : super(key: key);
+  const AddressInfoItem({super.key, this.icon, this.title});
 
   @override
   Widget build(BuildContext context) {

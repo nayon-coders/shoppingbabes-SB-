@@ -10,7 +10,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/dashboard/dashboard_scre
 
 class OrderDetailTopPortion extends StatelessWidget {
   final OrderProvider orderProvider;
-  const OrderDetailTopPortion({Key? key, required this.orderProvider}) : super(key: key);
+  const OrderDetailTopPortion({super.key, required this.orderProvider});
 
   @override
   Widget build(BuildContext context) {

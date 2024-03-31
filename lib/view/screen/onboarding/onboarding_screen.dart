@@ -11,10 +11,10 @@ class OnBoardingScreen extends StatelessWidget {
   final Color indicatorColor;
   final Color selectedIndicatorColor;
 
-  OnBoardingScreen({Key? key,
+  OnBoardingScreen({super.key,
     this.indicatorColor = Colors.grey,
     this.selectedIndicatorColor = Colors.black,
-  }) : super(key: key);
+  });
 
   final PageController _pageController = PageController();
 

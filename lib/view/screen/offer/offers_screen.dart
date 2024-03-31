@@ -14,7 +14,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OffersScreen extends StatelessWidget {
-  const OffersScreen({Key? key}) : super(key: key);
+  const OffersScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class OffersScreen extends StatelessWidget {
 }
 
 class OfferShimmer extends StatelessWidget {
-  const OfferShimmer({Key? key}) : super(key: key);
+  const OfferShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

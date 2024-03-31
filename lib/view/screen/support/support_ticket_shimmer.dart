@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SupportTicketShimmer extends StatelessWidget {
-  const SupportTicketShimmer({Key? key}) : super(key: key);
+  const SupportTicketShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/product/widget/review_wi
 
 class ReviewScreen extends StatelessWidget {
   final List<ReviewModel>? reviewList;
-  const ReviewScreen({Key? key, this.reviewList}) : super(key: key);
+  const ReviewScreen({super.key, this.reviewList});
 
   @override
   Widget build(BuildContext context) {

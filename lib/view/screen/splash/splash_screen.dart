@@ -22,7 +22,7 @@ import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   final NotificationBody? body;
-  const SplashScreen({Key? key, this.body}) : super(key: key);
+  const SplashScreen({super.key, this.body});
 
   @override
   SplashScreenState createState() => SplashScreenState();
@@ -68,6 +68,7 @@ class SplashScreenState extends State<SplashScreen> {
 
   void _route() {
     Provider.of<SplashProvider>(context, listen: false).initConfig(context).then((bool isSuccess) {
+      print("isSuccess === ${isSuccess}");
       if(isSuccess) {
         Provider.of<SplashProvider>(context, listen: false).initSharedPrefData();
         Timer(const Duration(seconds: 1), () {

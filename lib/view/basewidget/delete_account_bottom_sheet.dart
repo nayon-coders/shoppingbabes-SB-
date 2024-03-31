@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 class DeleteAccountBottomSheet extends StatelessWidget {
   final String customerId;
-  const DeleteAccountBottomSheet({Key? key, required this.customerId}) : super(key: key);
+  const DeleteAccountBottomSheet({super.key, required this.customerId});
 
   @override
   Widget build(BuildContext context) {

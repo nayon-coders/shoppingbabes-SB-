@@ -15,7 +15,7 @@ class ShopAgainFromRecentStoreCard extends StatelessWidget {
   final ShopAgainFromRecentStoreModel? shopAgainFromRecentStoreModel;
   final int? length;
   final int? index;
-  const ShopAgainFromRecentStoreCard({Key? key, this.shopAgainFromRecentStoreModel, this.length,  this.index}) : super(key: key);
+  const ShopAgainFromRecentStoreCard({super.key, this.shopAgainFromRecentStoreModel, this.length,  this.index});
 
   @override
   Widget build(BuildContext context) {

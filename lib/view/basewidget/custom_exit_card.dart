@@ -7,7 +7,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_button.dart';
 
 class CustomExitCard extends StatelessWidget {
-  const CustomExitCard({Key? key}) : super(key: key);
+  const CustomExitCard({super.key});
 
   @override
   Widget build(BuildContext context) {

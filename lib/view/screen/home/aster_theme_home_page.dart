@@ -55,7 +55,7 @@ import 'package:provider/provider.dart';
 
 
 class AsterThemeHomePage extends StatefulWidget {
-  const AsterThemeHomePage({Key? key}) : super(key: key);
+  const AsterThemeHomePage({super.key});
 
   @override
   State<AsterThemeHomePage> createState() => _AsterThemeHomePageState();

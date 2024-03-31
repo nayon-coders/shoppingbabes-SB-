@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class TransactionListView extends StatelessWidget {
   final ScrollController? scrollController;
-  const TransactionListView({Key? key,  this.scrollController}) : super(key: key);
+  const TransactionListView({super.key,  this.scrollController});
 
   @override
   Widget build(BuildContext context) {

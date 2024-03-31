@@ -17,7 +17,7 @@ class BrandAndCategoryProductScreen extends StatelessWidget {
   final String id;
   final String? name;
   final String? image;
-  const BrandAndCategoryProductScreen({Key? key, required this.isBrand, required this.id, required this.name, this.image}) : super(key: key);
+  const BrandAndCategoryProductScreen({super.key, required this.isBrand, required this.id, required this.name, this.image});
   @override
   Widget build(BuildContext context) {
     Provider.of<ProductProvider>(context, listen: false).initBrandOrCategoryProductList(isBrand, id, context);

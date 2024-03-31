@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/featured_dea
 import 'package:provider/provider.dart';
 
 class FeaturedDealScreen extends StatelessWidget {
-  const FeaturedDealScreen({Key? key}) : super(key: key);
+  const FeaturedDealScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

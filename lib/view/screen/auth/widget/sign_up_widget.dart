@@ -20,7 +20,7 @@ import 'package:provider/provider.dart';
 import 'otp_verification_screen.dart';
 
 class SignUpWidget extends StatefulWidget {
-  const SignUpWidget({Key? key}) : super(key: key);
+  const SignUpWidget({super.key});
 
   @override
   SignUpWidgetState createState() => SignUpWidgetState();

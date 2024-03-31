@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 class RemoveFromWishlistBottomSheet extends StatelessWidget {
   final int productId;
   final int index;
-  const RemoveFromWishlistBottomSheet({Key? key, required this.productId, required this.index}) : super(key: key);
+  const RemoveFromWishlistBottomSheet({super.key, required this.productId, required this.index});
 
   @override
   Widget build(BuildContext context) {

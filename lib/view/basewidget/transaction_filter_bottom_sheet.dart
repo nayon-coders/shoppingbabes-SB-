@@ -5,7 +5,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:provider/provider.dart';
 
 class TransactionFilterBottomSheet extends StatelessWidget {
-  const TransactionFilterBottomSheet({Key? key}) : super(key: key);
+  const TransactionFilterBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

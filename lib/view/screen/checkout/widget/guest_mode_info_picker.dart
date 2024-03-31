@@ -12,7 +12,7 @@ class GuestModeInfoPicker extends StatelessWidget {
   final String icon;
   final String title;
   final String subTitle;
-  const GuestModeInfoPicker({Key? key, required this.icon, required this.title, required this.subTitle}) : super(key: key);
+  const GuestModeInfoPicker({super.key, required this.icon, required this.title, required this.subTitle});
 
   @override
   Widget build(BuildContext context) {

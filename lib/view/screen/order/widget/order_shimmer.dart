@@ -4,7 +4,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class OrderShimmer extends StatelessWidget {
-  const OrderShimmer({Key? key}) : super(key: key);
+  const OrderShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

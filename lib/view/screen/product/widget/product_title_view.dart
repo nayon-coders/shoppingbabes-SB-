@@ -14,26 +14,30 @@ import 'package:provider/provider.dart';
 class ProductTitleView extends StatelessWidget {
   final pd.ProductDetailsModel? productModel;
   final String? averageRatting;
-  const ProductTitleView({Key? key, required this.productModel, this.averageRatting}) : super(key: key);
+  const ProductTitleView({super.key, required this.productModel, this.averageRatting});
 
   @override
   Widget build(BuildContext context) {
 
     double? startingPrice = 0;
     double? endingPrice;
-    if(productModel!.variation != null && productModel!.variation!.isNotEmpty) {
-      List<double?> priceList = [];
-      for (var variation in productModel!.variation!) {
-        priceList.add(variation.price);
+
+    if(productModel != null){
+      if(productModel!.variation != null && productModel!.variation!.isNotEmpty) {
+        List<double?> priceList = [];
+        for (var variation in productModel!.variation!) {
+          priceList.add(variation.price);
+        }
+        priceList.sort((a, b) => a!.compareTo(b!));
+        startingPrice = priceList[0];
+        if(priceList[0]! < priceList[priceList.length-1]!) {
+          endingPrice = priceList[priceList.length-1];
+        }
+      }else {
+        startingPrice = double.parse("${double.parse("${productModel!.unitPrice}").toStringAsFixed(2)}");
       }
-      priceList.sort((a, b) => a!.compareTo(b!));
-      startingPrice = priceList[0];
-      if(priceList[0]! < priceList[priceList.length-1]!) {
-        endingPrice = priceList[priceList.length-1];
-      }
-    }else {
-      startingPrice = productModel!.unitPrice;
     }
+
 
     return productModel != null? Container(
       padding: const EdgeInsets.symmetric(horizontal : Dimensions.homePagePadding),
@@ -51,9 +55,9 @@ class ProductTitleView extends StatelessWidget {
 
 
                 Text('${startingPrice != null ?PriceConverter.convertPrice(context, startingPrice,
-                    discount: productModel!.discount, discountType: productModel!.discountType):''}'
+                    discount: double.parse("${productModel!.discount}"), discountType: productModel!.discountType):''}'
                     '${endingPrice !=null ? ' - ${PriceConverter.convertPrice(context, endingPrice,
-                    discount: productModel!.discount, discountType: productModel!.discountType)}' : ''}',
+                    discount: double.parse("${productModel!.discount}"), discountType: productModel!.discountType)}' : ''}',
                   style: titilliumBold.copyWith(color: ColorResources.getPrimary(context),
                       fontSize: Dimensions.fontSizeLarge),
                 ),
@@ -74,8 +78,8 @@ class ProductTitleView extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(color: Theme.of(context).colorScheme.error.withOpacity(.20),
                         borderRadius: BorderRadius.circular(Dimensions.paddingSizeExtraSmall)),
-                    child: Text(PriceConverter.percentageCalculation(context, productModel!.unitPrice,
-                        productModel!.discount, productModel!.discountType),
+                    child: Text(PriceConverter.percentageCalculation(context, double.parse("${productModel!.unitPrice}"),
+                        double.parse("${productModel!.discount}"), productModel!.discountType),
                       style: textRegular.copyWith(color:Theme.of(context).colorScheme.error, fontSize: Dimensions.fontSizeLarge),
                     ),
                   ),

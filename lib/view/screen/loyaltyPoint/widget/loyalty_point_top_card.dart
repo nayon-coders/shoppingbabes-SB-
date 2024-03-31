@@ -10,7 +10,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/loyaltyPoint/widget/how_
 import 'package:provider/provider.dart';
 
 class LoyaltyPointTopCard extends StatelessWidget {
-  const LoyaltyPointTopCard({Key? key}) : super(key: key);
+  const LoyaltyPointTopCard({super.key});
 
   @override
   Widget build(BuildContext context) {

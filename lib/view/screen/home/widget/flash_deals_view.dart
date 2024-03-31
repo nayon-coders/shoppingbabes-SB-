@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 
 class FlashDealsView extends StatelessWidget {
   final bool isHomeScreen;
-  const FlashDealsView({Key? key, this.isHomeScreen = true}) : super(key: key);
+  const FlashDealsView({super.key, this.isHomeScreen = true});
 
   @override
   Widget build(BuildContext context) {

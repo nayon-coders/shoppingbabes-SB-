@@ -7,7 +7,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class RelatedProductView extends StatelessWidget {
-  const RelatedProductView({Key? key}) : super(key: key);
+  const RelatedProductView({super.key});
 
   @override
   Widget build(BuildContext context) {

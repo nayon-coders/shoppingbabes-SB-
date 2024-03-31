@@ -9,7 +9,7 @@ class LoyaltyPointWidget extends StatelessWidget {
   final LoyaltyPointList? loyaltyPointModel;
   final int length;
   final int index;
-  const LoyaltyPointWidget({Key? key, this.loyaltyPointModel, required this.length, required this.index}) : super(key: key);
+  const LoyaltyPointWidget({super.key, this.loyaltyPointModel, required this.length, required this.index});
 
   @override
   Widget build(BuildContext context) {

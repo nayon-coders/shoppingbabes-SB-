@@ -19,13 +19,13 @@ import 'package:share/share.dart';
 
 class ProductImageView extends StatelessWidget {
   final pd.ProductDetailsModel? productModel;
-  ProductImageView({Key? key, required this.productModel}) : super(key: key);
+  ProductImageView({super.key, required this.productModel});
 
   final PageController _controller = PageController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return productModel == null ? Center() : Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
 
         InkWell(
           onTap: ()=> Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) =>

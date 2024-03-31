@@ -13,7 +13,7 @@ import 'package:shimmer/shimmer.dart';
 
 class BrandView extends StatelessWidget {
   final bool isHomePage;
-  const BrandView({Key? key, required this.isHomePage}) : super(key: key);
+  const BrandView({super.key, required this.isHomePage});
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +102,7 @@ class BrandView extends StatelessWidget {
 
 class BrandShimmer extends StatelessWidget {
   final bool isHomePage;
-  const BrandShimmer({Key? key, required this.isHomePage}) : super(key: key);
+  const BrandShimmer({super.key, required this.isHomePage});
 
   @override
   Widget build(BuildContext context) {

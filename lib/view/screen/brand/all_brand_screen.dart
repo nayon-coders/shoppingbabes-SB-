@@ -10,7 +10,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/brand_view.d
 import 'package:provider/provider.dart';
 
 class AllBrandScreen extends StatelessWidget {
-  const AllBrandScreen({Key? key}) : super(key: key);
+  const AllBrandScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

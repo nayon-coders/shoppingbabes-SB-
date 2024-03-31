@@ -8,7 +8,7 @@ import '../shimmer/category_shimmer.dart';
 
 class CategoryView extends StatelessWidget {
   final bool isHomePage;
-  const CategoryView({Key? key, required this.isHomePage}) : super(key: key);
+  const CategoryView({super.key, required this.isHomePage});
 
   @override
   Widget build(BuildContext context) {

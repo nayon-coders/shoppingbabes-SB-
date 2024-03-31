@@ -7,7 +7,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:provider/provider.dart';
 
 class ProceedButton extends StatelessWidget {
-  const ProceedButton({Key? key}) : super(key: key);
+  const ProceedButton({super.key});
 
   @override
   Widget build(BuildContext context) {

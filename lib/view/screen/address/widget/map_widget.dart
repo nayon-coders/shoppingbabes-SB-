@@ -13,7 +13,7 @@ import 'dart:ui';
 
 class MapWidget extends StatefulWidget {
   final AddressModel address;
-  const MapWidget({Key? key, required this.address}) : super(key: key);
+  const MapWidget({super.key, required this.address});
 
   @override
   MapWidgetState createState() => MapWidgetState();

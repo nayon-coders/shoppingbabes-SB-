@@ -20,6 +20,9 @@ class DioClient {
         required this.sharedPreferences,
       }) {
     token = sharedPreferences.getString(AppConstants.userLoginToken);
+    print("user auth token ==== ${token}");
+    print("user auth token ====end"
+        );
     countryCode = sharedPreferences.getString(AppConstants.countryCode) ?? AppConstants.languages[0].countryCode;
     if (kDebugMode) {
       print("NNNN $token");
@@ -27,8 +30,8 @@ class DioClient {
     dio = dioC ?? Dio();
     dio
       ?..options.baseUrl = baseUrl
-      ..options.connectTimeout = 30000
-      ..options.receiveTimeout = 30000
+      ..options.connectTimeout = const Duration(milliseconds: 30000)
+      ..options.receiveTimeout =  const Duration(milliseconds: 30000)
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',

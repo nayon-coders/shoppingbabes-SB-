@@ -55,8 +55,10 @@ class ProfileRepo {
   Future<ApiResponse> getAllAddress() async {
     try {
       final response = await dioClient!.get('${AppConstants.addressListUri}?guest_id=${Provider.of<AuthProvider>(Get.context!, listen: false).getGuestToken()}');
+
       return ApiResponse.withSuccess(response);
     } catch (e) {
+      print("e === ${e}");
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }

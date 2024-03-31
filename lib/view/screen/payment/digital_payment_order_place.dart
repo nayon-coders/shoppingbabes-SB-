@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:collection';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +10,13 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/animated_custom_dial
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/order_place_success_dialog.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/dashboard/dashboard_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/cart_provider.dart';
+import 'package:provider/provider.dart';
 
 class DigitalPaymentScreen extends StatefulWidget {
   final String url;
   final bool fromWallet;
-  const DigitalPaymentScreen({Key? key, required this.url,  this.fromWallet = false}) : super(key: key);
+  const DigitalPaymentScreen({super.key, required this.url,  this.fromWallet = false});
 
   @override
   DigitalPaymentScreenState createState() => DigitalPaymentScreenState();
@@ -130,10 +131,9 @@ class MyInAppBrowser extends InAppBrowser {
   final BuildContext context;
 
   MyInAppBrowser(this.context, {
-    int? windowId,
-    UnmodifiableListView<UserScript>? initialUserScripts,
-  })
-      : super(windowId: windowId, initialUserScripts: initialUserScripts);
+    super.windowId,
+    super.initialUserScripts,
+  });
 
   bool _canRedirect = true;
 
@@ -237,6 +237,8 @@ class MyInAppBrowser extends InAppBrowser {
 
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const DashBoardScreen()), (route) => false);
 
+        print("_cartList.toString()");
+        Provider.of<CartProvider>(context, listen: false).emptyCart();
 
         showAnimatedDialog(context, OrderPlaceSuccessDialog(
           icon: Icons.done,

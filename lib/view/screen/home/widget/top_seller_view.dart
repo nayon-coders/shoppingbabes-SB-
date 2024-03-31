@@ -11,7 +11,7 @@ import 'package:shimmer/shimmer.dart';
 
 class TopSellerView extends StatelessWidget {
   final bool isHomePage;
-  const TopSellerView({Key? key, required this.isHomePage}) : super(key: key);
+  const TopSellerView({super.key, required this.isHomePage});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class TopSellerView extends StatelessWidget {
 }
 
 class TopSellerShimmer extends StatelessWidget {
-  const TopSellerShimmer({Key? key}) : super(key: key);
+  const TopSellerShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

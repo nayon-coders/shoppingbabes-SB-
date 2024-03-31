@@ -15,7 +15,7 @@ class SellerCard extends StatefulWidget {
   final bool isHomePage;
   final int index;
   final int length;
-  const SellerCard({Key? key, this.sellerModel, this.isHomePage = false, required this.index, required this.length}) : super(key: key);
+  const SellerCard({super.key, this.sellerModel, this.isHomePage = false, required this.index, required this.length});
 
   @override
   State<SellerCard> createState() => _SellerCardState();

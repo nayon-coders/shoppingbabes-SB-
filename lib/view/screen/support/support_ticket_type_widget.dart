@@ -6,7 +6,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/support/add_ticket_screen.dart';
 
 class SupportTicketTypeWidget extends StatefulWidget {
-  const SupportTicketTypeWidget({Key? key}) : super(key: key);
+  const SupportTicketTypeWidget({super.key});
 
   @override
   State<SupportTicketTypeWidget> createState() => _SupportTicketTypeWidgetState();
@@ -69,7 +69,7 @@ class TicketModel{
 class TypeButton extends StatelessWidget {
   final String? icon;
   final String? title;
-  const TypeButton({Key? key, this.icon, this.title}) : super(key: key);
+  const TypeButton({super.key, this.icon, this.title});
 
   @override
   Widget build(BuildContext context) {

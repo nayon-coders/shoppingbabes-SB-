@@ -56,7 +56,7 @@ class OrderAgainView extends StatelessWidget {
 
 class OrderAgainCard extends StatelessWidget {
   final Orders orders;
-  const OrderAgainCard({Key? key, required this.orders}) : super(key: key);
+  const OrderAgainCard({super.key, required this.orders});
 
   @override
   Widget build(BuildContext context) {

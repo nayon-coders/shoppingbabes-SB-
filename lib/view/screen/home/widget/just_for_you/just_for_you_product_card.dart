@@ -17,7 +17,7 @@ class JustForYouProductCard extends StatelessWidget {
   final Product product;
   final int index;
 
-  const JustForYouProductCard(this.product, {Key? key, required this.index}) : super(key: key);
+  const JustForYouProductCard(this.product, {super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {

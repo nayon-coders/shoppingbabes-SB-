@@ -14,7 +14,7 @@ import 'otp_verification_screen.dart';
 
 class MobileVerificationScreen extends StatefulWidget {
   final String tempToken;
-  const MobileVerificationScreen(this.tempToken, {Key? key}) : super(key: key);
+  const MobileVerificationScreen(this.tempToken, {super.key});
 
   @override
   MobileVerificationScreenState createState() => MobileVerificationScreenState();

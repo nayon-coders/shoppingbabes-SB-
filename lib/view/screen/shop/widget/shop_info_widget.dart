@@ -21,7 +21,7 @@ class ShopInfoWidget extends StatelessWidget {
   final int sellerId;
   final String banner;
   final String shopImage;
-  const ShopInfoWidget({Key? key, required this.vacationIsOn, required this.sellerName, required this.sellerId, required this.banner, required this.shopImage, required this.temporaryClose}) : super(key: key);
+  const ShopInfoWidget({super.key, required this.vacationIsOn, required this.sellerName, required this.sellerId, required this.banner, required this.shopImage, required this.temporaryClose});
 
   @override
   Widget build(BuildContext context) {

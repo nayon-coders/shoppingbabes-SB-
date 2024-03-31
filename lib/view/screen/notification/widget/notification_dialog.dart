@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 class NotificationDialog extends StatelessWidget {
   final NotificationItem notificationModel;
-  const NotificationDialog({Key? key, required this.notificationModel}) : super(key: key);
+  const NotificationDialog({super.key, required this.notificationModel});
 
   @override
   Widget build(BuildContext context) {

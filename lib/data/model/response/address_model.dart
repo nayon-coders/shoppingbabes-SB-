@@ -13,7 +13,7 @@ class AddressModel {
   String? country;
   String? latitude;
   String? longitude;
-  int? isBilling;
+  bool? isBilling;
   String? guestId;
   String? email;
 
@@ -39,7 +39,7 @@ class AddressModel {
 
   AddressModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    customerId = json['customer_id'];
+    customerId = int.parse("${json['customer_id']}");
     contactPersonName = json['contact_person_name'];
     addressType = json['address_type'];
     address = json['address'];

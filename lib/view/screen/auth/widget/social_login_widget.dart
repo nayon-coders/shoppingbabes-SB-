@@ -20,7 +20,7 @@ import 'mobile_verify_screen.dart';
 import 'otp_verification_screen.dart';
 
 class SocialLoginWidget extends StatefulWidget {
-  const SocialLoginWidget({Key? key}) : super(key: key);
+  const SocialLoginWidget({super.key});
 
   @override
   SocialLoginWidgetState createState() => SocialLoginWidgetState();

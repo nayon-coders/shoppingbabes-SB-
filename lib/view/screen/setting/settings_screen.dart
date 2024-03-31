@@ -13,7 +13,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/select_language_bott
 import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class TitleButton extends StatelessWidget {
   final String image;
   final String? title;
   final Function onTap;
-  const TitleButton({Key? key, required this.image, required this.title, required this.onTap}) : super(key: key);
+  const TitleButton({super.key, required this.image, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

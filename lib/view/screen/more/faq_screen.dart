@@ -7,7 +7,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/no_internet_screen.d
 import 'package:provider/provider.dart';
 class FaqScreen extends StatefulWidget {
   final String? title;
-  const FaqScreen({Key? key, required this.title}) : super(key: key);
+  const FaqScreen({super.key, required this.title});
 
   @override
   FaqScreenState createState() => FaqScreenState();

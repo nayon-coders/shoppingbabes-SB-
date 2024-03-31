@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 class OfflinePaymentScreen extends StatefulWidget {
   final double payableAmount;
   final Function callback;
-  const OfflinePaymentScreen({Key? key, required this.payableAmount, required this.callback}) : super(key: key);
+  const OfflinePaymentScreen({super.key, required this.payableAmount, required this.callback});
 
   @override
   State<OfflinePaymentScreen> createState() => _OfflinePaymentScreenState();

@@ -7,7 +7,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_button.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_expanded_app_bar.dart';
 
 class HelpCenterScreen extends StatelessWidget {
-  const HelpCenterScreen({Key? key}) : super(key: key);
+  const HelpCenterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

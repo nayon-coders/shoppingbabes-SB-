@@ -14,7 +14,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/search/widget/search_pro
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({super.key});
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();

@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 
 class LatestProductWidget extends StatelessWidget {
   final Product productModel;
-  const LatestProductWidget({Key? key, required this.productModel}) : super(key: key);
+  const LatestProductWidget({super.key, required this.productModel});
 
   @override
   Widget build(BuildContext context) {

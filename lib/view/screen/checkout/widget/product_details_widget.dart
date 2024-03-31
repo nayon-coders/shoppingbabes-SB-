@@ -10,7 +10,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 import 'package:provider/provider.dart';
 
 class CheckOutProductDetailsWidget extends StatelessWidget {
-  const CheckOutProductDetailsWidget({Key? key}) : super(key: key);
+  const CheckOutProductDetailsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

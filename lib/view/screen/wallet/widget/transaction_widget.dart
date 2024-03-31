@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 class TransactionWidget extends StatelessWidget {
   final WalletTransactioList? transactionModel;
-  const TransactionWidget({Key? key, this.transactionModel}) : super(key: key);
+  const TransactionWidget({super.key, this.transactionModel});
 
   @override
   Widget build(BuildContext context) {

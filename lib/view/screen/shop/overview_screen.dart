@@ -17,7 +17,7 @@ import 'package:shimmer/shimmer.dart';
 class ShopOverviewScreen extends StatefulWidget {
   final int sellerId;
   final ScrollController scrollController;
-  const ShopOverviewScreen({Key? key, required this.sellerId, required this.scrollController}) : super(key: key);
+  const ShopOverviewScreen({super.key, required this.sellerId, required this.scrollController});
 
   @override
   State<ShopOverviewScreen> createState() => _ShopOverviewScreenState();

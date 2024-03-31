@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class OfflineCard extends StatelessWidget {
   final int index;
   final OfflineMethods offlinePaymentModel;
-  const OfflineCard({Key? key, required this.offlinePaymentModel, required this.index}) : super(key: key);
+  const OfflineCard({super.key, required this.offlinePaymentModel, required this.index});
 
   @override
   Widget build(BuildContext context) {

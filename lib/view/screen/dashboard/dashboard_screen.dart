@@ -15,7 +15,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/order/order_screen.dart'
 import 'package:provider/provider.dart';
 
 class DashBoardScreen extends StatefulWidget {
-  const DashBoardScreen({Key? key}) : super(key: key);
+  const DashBoardScreen({super.key});
 
 
   @override
@@ -115,8 +115,8 @@ class CustomMenuItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const CustomMenuItem({
-    Key? key, required this.isSelected, required this.name, required this.icon, required this.onTap,
-  }) : super(key: key);
+    super.key, required this.isSelected, required this.name, required this.icon, required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

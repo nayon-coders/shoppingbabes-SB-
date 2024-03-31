@@ -366,7 +366,7 @@ class CurrencyList {
   String? symbol;
   String? code;
   double? exchangeRate;
-  int? status;
+  bool? status;
   String? createdAt;
   String? updatedAt;
 
@@ -385,7 +385,7 @@ class CurrencyList {
     name = json['name'];
     symbol = json['symbol'];
     code = json['code'];
-    exchangeRate = json['exchange_rate'].toDouble();
+    exchangeRate = double.parse("${json['exchange_rate']}");
     status = json['status'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

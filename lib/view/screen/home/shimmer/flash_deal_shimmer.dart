@@ -9,7 +9,7 @@ import 'package:shimmer/shimmer.dart';
 
 class FlashDealShimmer extends StatelessWidget {
 
-  const FlashDealShimmer({Key? key, }) : super(key: key);
+  const FlashDealShimmer({super.key, });
 
   @override
   Widget build(BuildContext context) {

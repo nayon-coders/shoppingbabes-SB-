@@ -220,10 +220,12 @@ class Shop {
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _banner = json['banner'];
-    _temporaryClose = json['temporary_close'] != null? int.parse(json['temporary_close'].toString()):0;
+    //_temporaryClose = json['temporary_close'] != null? json['temporary_close']: json['temporary_close'];
+    _temporaryClose = 0;
     _vacationEndDate = json['vacation_end_date'];
     _vacationStartDate = json['vacation_start_date'];
-    _vacationStatus = json['vacation_status'] != null? int.parse(json['vacation_status'].toString()):0;
+    //_vacationStatus = json['vacation_status'] != null? int.parse(json['vacation_status'].toString()):0;
+    _vacationStatus = 0;
   }
 
   Map<String, dynamic> toJson() {

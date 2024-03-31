@@ -15,7 +15,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_button.dart';
 import 'package:provider/provider.dart';
 
 class SearchFilterBottomSheet extends StatefulWidget {
-  const SearchFilterBottomSheet({Key? key}) : super(key: key);
+  const SearchFilterBottomSheet({super.key});
 
   @override
   SearchFilterBottomSheetState createState() => SearchFilterBottomSheetState();
@@ -163,7 +163,7 @@ class SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
 class FilterItemWidget extends StatelessWidget {
   final String? title;
   final int index;
-  const FilterItemWidget({Key? key, required this.title, required this.index}) : super(key: key);
+  const FilterItemWidget({super.key, required this.title, required this.index});
 
   @override
   Widget build(BuildContext context) {

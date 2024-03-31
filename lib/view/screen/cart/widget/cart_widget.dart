@@ -18,7 +18,7 @@ class CartWidget extends StatelessWidget {
   final CartModel? cartModel;
   final int index;
   final bool fromCheckout;
-  const CartWidget({Key? key, this.cartModel, required this.index, required this.fromCheckout}) : super(key: key);
+  const CartWidget({super.key, this.cartModel, required this.index, required this.fromCheckout});
 
   @override
   Widget build(BuildContext context) {
@@ -200,8 +200,8 @@ class QuantityButton extends StatelessWidget {
   final int? maxQty;
   final int? minimumOrderQuantity;
   final bool? digitalProduct;
-  const QuantityButton({Key? key, required this.isIncrement, required this.quantity, required this.index,
-    required this.maxQty,required this.cartModel, this.minimumOrderQuantity, this.digitalProduct}) : super(key: key);
+  const QuantityButton({super.key, required this.isIncrement, required this.quantity, required this.index,
+    required this.maxQty,required this.cartModel, this.minimumOrderQuantity, this.digitalProduct});
 
   @override
   Widget build(BuildContext context) {

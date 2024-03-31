@@ -156,12 +156,12 @@ class VerificationImages {
 }
 
 class Order {
-  int? isShippingFree;
+  bool? isShippingFree;
 
   Order({this.isShippingFree});
 
   Order.fromJson(Map<String, dynamic> json) {
-    isShippingFree = int.parse(json['is_shipping_free'].toString());
+    isShippingFree = json['is_shipping_free'];
   }
 
 

@@ -32,7 +32,7 @@ class AnimSearchBar extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   const AnimSearchBar({
-    Key? key,
+    super.key,
 
     /// The width cannot be null
     required this.width,
@@ -65,7 +65,7 @@ class AnimSearchBar extends StatefulWidget {
     /// can add list of inputformatters to control the input
     this.inputFormatters,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   AnimSearchBarState createState() => AnimSearchBarState();

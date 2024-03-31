@@ -11,7 +11,7 @@ class CategoryWidget extends StatelessWidget {
   final Category category;
   final int index;
   final int length;
-  const CategoryWidget({Key? key, required this.category, required this.index, required this.length}) : super(key: key);
+  const CategoryWidget({super.key, required this.category, required this.index, required this.length});
 
   @override
   Widget build(BuildContext context) {

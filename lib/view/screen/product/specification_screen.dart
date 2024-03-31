@@ -9,7 +9,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class SpecificationScreen extends StatelessWidget {
   final String specification;
-  const SpecificationScreen({Key? key, required this.specification}) : super(key: key);
+  const SpecificationScreen({super.key, required this.specification});
 
   @override
   Widget build(BuildContext context) {

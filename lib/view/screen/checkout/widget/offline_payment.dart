@@ -11,7 +11,7 @@ class OfflinePaymentDialog extends StatelessWidget {
   final TextEditingController? paymentBy;
   final TextEditingController? transactionId;
   final TextEditingController? paymentNote;
-  const OfflinePaymentDialog({Key? key,  this.rotateAngle = 0,  required this.onTap, this.paymentBy, this.transactionId, this.paymentNote}) : super(key: key);
+  const OfflinePaymentDialog({super.key,  this.rotateAngle = 0,  required this.onTap, this.paymentBy, this.transactionId, this.paymentNote});
 
   @override
   Widget build(BuildContext context) {

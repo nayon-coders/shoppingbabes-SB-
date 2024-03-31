@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class CouponApplyWidget extends StatelessWidget {
   final TextEditingController couponController;
   final double orderAmount;
-  const CouponApplyWidget({Key? key, required this.couponController, required this.orderAmount}) : super(key: key);
+  const CouponApplyWidget({super.key, required this.couponController, required this.orderAmount});
 
   @override
   Widget build(BuildContext context) {

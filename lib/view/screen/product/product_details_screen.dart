@@ -24,7 +24,7 @@ class ProductDetails extends StatefulWidget {
   final int? productId;
   final String? slug;
   final bool isFromWishList;
-  const ProductDetails({Key? key, required this.productId, required this.slug, this.isFromWishList = false}) : super(key: key);
+  const ProductDetails({super.key, required this.productId, required this.slug, this.isFromWishList = false});
 
 
 
@@ -69,8 +69,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Column(children: [
 
                   ProductTitleView(productModel: details.productDetailsModel,
-                      averageRatting: details.productDetailsModel?.averageReview != null?
-                      details.productDetailsModel!.averageReview: "0"),
+                      averageRatting: details.productDetailsModel?.averageReview.toString() ?? "0"),
 
 
 
@@ -160,7 +159,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     Padding(padding: const EdgeInsets.symmetric(vertical : Dimensions.paddingSizeDefault),
                       child: TitleRow(title: getTranslated('more_from_the_shop', context), isDetailsPage: true),):const SizedBox(),
 
-                    details.productDetailsModel!.addedBy == 'seller' ?
+                    details.productDetailsModel != null && details.productDetailsModel!.addedBy == 'seller' ?
                     Padding(padding: const EdgeInsets.symmetric(horizontal : Dimensions.paddingSizeDefault),
                         child: ShopProductViewList(
                             scrollController: scrollController, sellerId: details.productDetailsModel!.userId!)):const SizedBox(),

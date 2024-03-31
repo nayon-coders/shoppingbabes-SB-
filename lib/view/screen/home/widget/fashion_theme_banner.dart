@@ -14,7 +14,7 @@ import 'package:shimmer/shimmer.dart';
 
 
 class FashionBannersView extends StatelessWidget {
-  const FashionBannersView({Key? key}) : super(key: key);
+  const FashionBannersView({super.key});
 
   @override
   Widget build(BuildContext context) {

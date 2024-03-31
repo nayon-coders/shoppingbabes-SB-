@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_button.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_textfield.dart';
 
 class GuestUserContactInformation extends StatefulWidget {
-  const GuestUserContactInformation({Key? key}) : super(key: key);
+  const GuestUserContactInformation({super.key});
 
   @override
   State<GuestUserContactInformation> createState() => _GuestUserContactInformationState();

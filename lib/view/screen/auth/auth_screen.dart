@@ -10,7 +10,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/auth/widget/sign_up_widg
 import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget{
-  const AuthScreen({Key? key}) : super(key: key);
+  const AuthScreen({super.key});
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();

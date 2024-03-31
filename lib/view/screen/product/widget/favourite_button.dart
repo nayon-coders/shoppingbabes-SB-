@@ -10,7 +10,7 @@ class FavouriteButton extends StatelessWidget {
   final Color backgroundColor;
 
   final int? productId;
-  const FavouriteButton({Key? key, this.backgroundColor = Colors.black, this.productId}) : super(key: key);
+  const FavouriteButton({super.key, this.backgroundColor = Colors.black, this.productId});
 
   @override
   Widget build(BuildContext context) {

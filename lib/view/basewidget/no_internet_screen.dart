@@ -15,7 +15,7 @@ class NoInternetOrDataScreen extends StatelessWidget {
   final String? message;
   final String? icon;
   final bool icCart;
-  const NoInternetOrDataScreen({Key? key, required this.isNoInternet, this.child, this.message, this.icon,  this.icCart = false}) : super(key: key);
+  const NoInternetOrDataScreen({super.key, required this.isNoInternet, this.child, this.message, this.icon,  this.icCart = false});
 
   @override
   Widget build(BuildContext context) {

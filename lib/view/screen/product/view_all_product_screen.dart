@@ -9,7 +9,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/products_vie
 class AllProductScreen extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
   final ProductType productType;
-  AllProductScreen({Key? key, required this.productType}) : super(key: key);
+  AllProductScreen({super.key, required this.productType});
 
   @override
   Widget build(BuildContext context) {

@@ -10,7 +10,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
 class MostSearchingProductListView extends StatefulWidget {
-  const MostSearchingProductListView({Key? key}) : super(key: key);
+  const MostSearchingProductListView({super.key});
   @override
   State<MostSearchingProductListView> createState() => _MostSearchingProductListViewState();
 }

@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/checkout/widget/shipping
 
 class PaymentInfo extends StatelessWidget {
   final OrderProvider? order;
-  const PaymentInfo({Key? key, this.order}) : super(key: key);
+  const PaymentInfo({super.key, this.order});
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 
 class ShopCouponItem extends StatelessWidget {
   final Coupons coupons;
-  const ShopCouponItem({Key? key, required this.coupons}) : super(key: key);
+  const ShopCouponItem({super.key, required this.coupons});
 
   @override
   Widget build(BuildContext context) {

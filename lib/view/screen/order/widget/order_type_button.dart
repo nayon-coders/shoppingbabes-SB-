@@ -9,7 +9,7 @@ class OrderTypeButton extends StatelessWidget {
   final int index;
 
 
-  const OrderTypeButton({Key? key, required this.text, required this.index}) : super(key: key);
+  const OrderTypeButton({super.key, required this.text, required this.index});
 
   @override
   Widget build(BuildContext context) {

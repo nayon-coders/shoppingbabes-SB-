@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/auth/auth_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/dashboard/dashboard_screen.dart';
 
 class NotLoggedInWidget extends StatelessWidget {
-  const NotLoggedInWidget({Key? key}) : super(key: key);
+  const NotLoggedInWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

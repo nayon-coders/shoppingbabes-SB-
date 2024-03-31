@@ -12,8 +12,8 @@ import 'package:provider/provider.dart';
 class SearchWidget extends StatefulWidget {
   final String? hintText;
   final int sellerId;
-  const SearchWidget({Key? key, required this.hintText,
-  required this.sellerId}) : super(key: key);
+  const SearchWidget({super.key, required this.hintText,
+  required this.sellerId});
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();

@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class OrderAgainShimmerShimmer extends StatelessWidget {
 
-  const OrderAgainShimmerShimmer({Key? key, }) : super(key: key);
+  const OrderAgainShimmerShimmer({super.key, });
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import 'package:shimmer/shimmer.dart';
 
 class FindWhatYouNeedShimmer extends StatelessWidget {
 
-  const FindWhatYouNeedShimmer({Key? key, }) : super(key: key);
+  const FindWhatYouNeedShimmer({super.key, });
 
   @override
   Widget build(BuildContext context) {

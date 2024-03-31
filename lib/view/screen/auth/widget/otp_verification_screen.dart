@@ -25,7 +25,7 @@ class VerificationScreen extends StatefulWidget {
   final bool fromDigitalProduct;
   final int? orderId;
 
-  const VerificationScreen(this.tempToken, this.mobileNumber, this.email, {Key? key, this.fromForgetPassword = false,  this.fromDigitalProduct = false, this.orderId}) : super(key: key);
+  const VerificationScreen(this.tempToken, this.mobileNumber, this.email, {super.key, this.fromForgetPassword = false,  this.fromDigitalProduct = false, this.orderId});
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();

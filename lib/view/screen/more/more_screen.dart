@@ -35,7 +35,7 @@ import 'package:provider/provider.dart';
 import 'faq_screen.dart';
 
 class MoreScreen extends StatefulWidget {
-  const MoreScreen({Key? key}) : super(key: key);
+  const MoreScreen({super.key});
 
   @override
   State<MoreScreen> createState() => _MoreScreenState();
@@ -239,10 +239,10 @@ class SquareButton extends StatelessWidget {
   final bool isLoyalty;
   final String? subTitle;
 
-  const SquareButton({Key? key, required this.image,
+  const SquareButton({super.key, required this.image,
     required this.title, required this.navigateTo, required this.count,
     required this.hasCount, this.isWallet = false, this.balance, this.subTitle,
-     this.isLoyalty = false}) : super(key: key);
+     this.isLoyalty = false});
 
   @override
   Widget build(BuildContext context) {
@@ -307,7 +307,7 @@ class TitleButton extends StatelessWidget {
   final Widget navigateTo;
   final bool isNotification;
   final bool isProfile;
-  const TitleButton({Key? key, required this.image, required this.title, required this.navigateTo,  this.isNotification = false, this.isProfile = false}) : super(key: key);
+  const TitleButton({super.key, required this.image, required this.title, required this.navigateTo,  this.isNotification = false, this.isProfile = false});
 
   @override
   Widget build(BuildContext context) {

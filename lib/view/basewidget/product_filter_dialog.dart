@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 class ProductFilterDialog extends StatefulWidget {
   final int? sellerId;
   final bool fromShop;
-  const ProductFilterDialog({Key? key, this.sellerId,  this.fromShop = true}) : super(key: key);
+  const ProductFilterDialog({super.key, this.sellerId,  this.fromShop = true});
 
   @override
   ProductFilterDialogState createState() => ProductFilterDialogState();
@@ -212,7 +212,7 @@ class ProductFilterDialogState extends State<ProductFilterDialog> {
 class FilterItemWidget extends StatelessWidget {
   final String? title;
   final int index;
-  const FilterItemWidget({Key? key, required this.title, required this.index}) : super(key: key);
+  const FilterItemWidget({super.key, required this.title, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -238,7 +238,7 @@ class CategoryFilterItem extends StatelessWidget {
   final String? title;
   final bool checked;
   final Function()? onTap;
-  const CategoryFilterItem({Key? key, required this.title, required this.checked, this.onTap}) : super(key: key);
+  const CategoryFilterItem({super.key, required this.title, required this.checked, this.onTap});
 
   @override
   Widget build(BuildContext context) {

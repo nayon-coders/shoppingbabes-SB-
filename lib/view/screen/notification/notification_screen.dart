@@ -18,7 +18,7 @@ import 'package:shimmer/shimmer.dart';
 
 class NotificationScreen extends StatefulWidget {
 
-  const NotificationScreen({Key? key}) : super(key: key);
+  const NotificationScreen({super.key});
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();
@@ -104,7 +104,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
 }
 
 class NotificationShimmer extends StatelessWidget {
-  const NotificationShimmer({Key? key}) : super(key: key);
+  const NotificationShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

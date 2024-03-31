@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 class ReviewSection extends StatelessWidget {
   final ProductDetailsProvider details;
-  const ReviewSection({Key? key, required this.details}) : super(key: key);
+  const ReviewSection({super.key, required this.details});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class ReviewSection extends StatelessWidget {
 
           child: Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              RatingBar(rating: double.parse(details.productDetailsModel!.averageReview!), size: 18,),
+              RatingBar(rating: double.parse(details.productDetailsModel!.averageReview!.toString() ?? "0"), size: 18,),
               const SizedBox(width: Dimensions.paddingSizeDefault),
-              Text('${double.parse(details.productDetailsModel!.averageReview!).toStringAsFixed(1)} ${getTranslated('out_of_5', context)}',
+              Text('${double.parse(details.productDetailsModel!.averageReview!.toString()).toStringAsFixed(1)} ${getTranslated('out_of_5', context)}',
                   style: textRegular.copyWith(color: Provider.of<ThemeProvider>(context, listen: false).darkTheme? Theme.of(context).hintColor : Colors.black)),
             ],
           ),

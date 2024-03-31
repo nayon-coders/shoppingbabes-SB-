@@ -5,7 +5,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/custom_themes.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 class AddressListPage extends StatelessWidget {
   final AddressModel? address;
-  const AddressListPage({Key? key, this.address}) : super(key: key);
+  const AddressListPage({super.key, this.address});
 
   @override
   Widget build(BuildContext context) {

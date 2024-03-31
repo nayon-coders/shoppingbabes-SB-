@@ -6,7 +6,7 @@ import 'package:shimmer/shimmer.dart';
 
 
 class CartPageShimmer extends StatelessWidget {
-  const CartPageShimmer({Key? key}) : super(key: key);
+  const CartPageShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

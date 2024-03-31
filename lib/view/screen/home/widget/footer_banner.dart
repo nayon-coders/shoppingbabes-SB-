@@ -11,7 +11,7 @@ class SingleBannersView extends StatelessWidget {
   final BannerModel? bannerModel;
   final double? height;
   final bool noRadius;
-  const SingleBannersView({Key? key, this.bannerModel, this.height,  this.noRadius = false}) : super(key: key);
+  const SingleBannersView({super.key, this.bannerModel, this.height,  this.noRadius = false});
 
 
   @override

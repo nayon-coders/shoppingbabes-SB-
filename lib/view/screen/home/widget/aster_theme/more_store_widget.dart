@@ -15,7 +15,7 @@ class MoreStoreWidget extends StatefulWidget {
   final int index;
   final int length;
   final bool fromHomePage;
-  const MoreStoreWidget({Key? key, required this.moreStore, required this.index, required this.length,  this.fromHomePage  = false}) : super(key: key);
+  const MoreStoreWidget({super.key, required this.moreStore, required this.index, required this.length,  this.fromHomePage  = false});
 
   @override
   State<MoreStoreWidget> createState() => _MoreStoreWidgetState();

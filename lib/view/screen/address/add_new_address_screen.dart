@@ -34,7 +34,8 @@ class AddNewAddressScreen extends StatefulWidget {
   final bool fromCheckout;
   final AddressModel? address;
   final bool? isBilling;
-  const AddNewAddressScreen({Key? key, this.isEnableUpdate = false, this.address, this.fromCheckout = false, this.isBilling}) : super(key: key);
+  final bool isRider;
+  const AddNewAddressScreen({super.key, this.isEnableUpdate = false, this.address, this.fromCheckout = false, this.isBilling, this.isRider = false});
 
   @override
   State<AddNewAddressScreen> createState() => _AddNewAddressScreenState();
@@ -68,6 +69,8 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
     }else{
       _address = Address.shipping;
     }
+
+    print("rider ====- ${widget.isRider}");
 
     country = 'BD';
     _countryCodeController.text = country;
@@ -379,8 +382,8 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                     const SizedBox(height: Dimensions.paddingSizeDefaultAddress),
 
 
-                    Provider.of<SplashProvider>(context, listen: false).configModel!.deliveryZipCodeAreaRestriction == 0?
-                    CustomTextField(
+                    // Provider.of<SplashProvider>(context, listen: false).configModel!.deliveryZipCodeAreaRestriction == 0?
+                   widget.isRider == false?  CustomTextField(
                       labelText: getTranslated('zip', context),
                         hintText: getTranslated('zip', context),
                         inputAction: TextInputAction.done,
@@ -430,20 +433,21 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                         margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                         child: !locationProvider.isLoading ? CustomButton(
                           buttonText: widget.isEnableUpdate ? getTranslated('update_address', context) : getTranslated('save_location', context),
-                          onTap: locationProvider.loading ? null : () { AddressModel addressModel = AddressModel(
-                            addressType: locationProvider.addressTypeList[locationProvider.selectAddressIndex].title,
-                            contactPersonName: _contactPersonNameController.text,
-                            phone: '${Provider.of<AuthProvider>(context, listen: false).countryDialCode}${_contactPersonNumberController.text.trim()}',
-                            email: _contactPersonEmailController.text.trim(),
-                            city: _cityController.text,
-                            zip: _zipCodeController.text,
-                            country:  _countryCodeController.text,
-                            guestId: Provider.of<AuthProvider>(context, listen: false).getGuestToken(),
-                            isBilling: _address == Address.billing ? 1:0,
-                            address: locationProvider.locationController.text,
-                            latitude: widget.isEnableUpdate ? locationProvider.position.latitude.toString() : locationProvider.position.latitude.toString(),
-                            longitude: widget.isEnableUpdate ? locationProvider.position.longitude.toString()
-                                : locationProvider.position.longitude.toString(),
+                          onTap: locationProvider.loading ? null : () {
+                            AddressModel addressModel = AddressModel(
+                                addressType: locationProvider.addressTypeList[locationProvider.selectAddressIndex].title,
+                                contactPersonName: _contactPersonNameController.text,
+                                phone: '${Provider.of<AuthProvider>(context, listen: false).countryDialCode}${_contactPersonNumberController.text.trim()}',
+                                email: _contactPersonEmailController.text.trim(),
+                                city: _cityController.text,
+                                zip: _zipCodeController.text,
+                                country:  _countryCodeController.text,
+                                guestId: Provider.of<AuthProvider>(context, listen: false).getGuestToken(),
+                                isBilling: _address == Address.billing ,
+                                address: locationProvider.locationController.text,
+                                latitude: widget.isEnableUpdate ? locationProvider.position.latitude.toString() : locationProvider.position.latitude.toString(),
+                                longitude: widget.isEnableUpdate ? locationProvider.position.longitude.toString()
+                                    : locationProvider.position.longitude.toString(),
                           );
 
 
@@ -472,6 +476,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                                   Provider.of<ProfileProvider>(context, listen: false).initAddressList();
                                   Provider.of<OrderProvider>(context, listen: false).setAddressIndex(-1);
                                 } else {
+                                  print("value.message! == ${value.message!}");
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(value.message!), duration: const Duration(milliseconds: 600), backgroundColor: Colors.green));
                                 }
                               } else {

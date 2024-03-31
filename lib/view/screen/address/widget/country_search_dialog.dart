@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 
 class CountrySearchDialog extends StatelessWidget {
-  const CountrySearchDialog({Key? key}) : super(key: key);
+  const CountrySearchDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

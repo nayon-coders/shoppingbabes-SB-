@@ -9,7 +9,7 @@ class CustomizedAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
   final Color? iconColor;
   final Color? textColor;
-  const CustomizedAppBar({Key? key, required this.title, this.isBackButtonExist = true, this.color, this.height, this.iconColor, this.textColor}) : super(key: key);
+  const CustomizedAppBar({super.key, required this.title, this.isBackButtonExist = true, this.color, this.height, this.iconColor, this.textColor});
 
   @override
   Widget build(BuildContext context) {

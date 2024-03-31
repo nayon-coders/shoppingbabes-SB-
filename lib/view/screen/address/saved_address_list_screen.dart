@@ -13,7 +13,8 @@ import 'package:provider/provider.dart';
 import 'add_new_address_screen.dart';
 class SavedAddressListScreen extends StatefulWidget {
   final bool fromGuest;
-  const SavedAddressListScreen({Key? key,  this.fromGuest = false}) : super(key: key);
+  final bool isRider;
+  const SavedAddressListScreen({super.key,  this.fromGuest = false, this.isRider = false});
 
   @override
   State<SavedAddressListScreen> createState() => _SavedAddressListScreenState();
@@ -21,11 +22,15 @@ class SavedAddressListScreen extends StatefulWidget {
 
 class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
 
+  initState(){
+    print("rider === ${widget.isRider}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AddNewAddressScreen(isBilling: false))),
+        onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) =>  AddNewAddressScreen(isBilling: false, isRider: widget.isRider))),
         backgroundColor: ColorResources.getPrimary(context),
         child: Icon(Icons.add, color: Theme.of(context).highlightColor),
       ),

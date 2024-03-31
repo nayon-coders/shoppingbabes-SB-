@@ -17,7 +17,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/auth/widget/otp_verifica
 import 'package:provider/provider.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
-  const ForgetPasswordScreen({Key? key}) : super(key: key);
+  const ForgetPasswordScreen({super.key});
 
   @override
   State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();

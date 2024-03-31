@@ -13,7 +13,7 @@ class CustomFieldWithTitle extends StatelessWidget {
   final String? setLimitTitle;
   final Function? onTap;
   const CustomFieldWithTitle({
-    Key? key,
+    super.key,
     required this.customTextField,
     this.title,
     this.setLimitTitle,
@@ -22,7 +22,7 @@ class CustomFieldWithTitle extends StatelessWidget {
     this.isSKU = false,
     this.limitSet = false,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

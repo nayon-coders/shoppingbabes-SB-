@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class FeaturedDealsView extends StatelessWidget {
   final bool isHomePage;
-  const FeaturedDealsView({Key? key, this.isHomePage = true}) : super(key: key);
+  const FeaturedDealsView({super.key, this.isHomePage = true});
 
   @override
   Widget build(BuildContext context) {

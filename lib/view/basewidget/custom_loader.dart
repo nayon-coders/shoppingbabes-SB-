@@ -4,15 +4,14 @@ import 'package:flutter/widgets.dart';
 
 class CustomLoader extends StatefulWidget {
   const CustomLoader({
-    Key? key,
+    super.key,
     this.color,
     this.size = 50.0,
     this.itemBuilder,
     this.duration = const Duration(milliseconds: 500),
     this.controller,
   })  : assert(!(itemBuilder is IndexedWidgetBuilder && color is Color) && !(itemBuilder == null && color == null),
-  'You should specify either a itemBuilder or a color'),
-        super(key: key);
+  'You should specify either a itemBuilder or a color');
 
   final Color? color;
   final double size;

@@ -14,7 +14,7 @@ class ProductView extends StatelessWidget {
   final ProductType productType;
   final ScrollController? scrollController;
   final String? sellerId;
-  const ProductView({Key? key, required this.isHomePage, required this.productType, this.scrollController, this.sellerId}) : super(key: key);
+  const ProductView({super.key, required this.isHomePage, required this.productType, this.scrollController, this.sellerId});
 
   @override
   Widget build(BuildContext context) {

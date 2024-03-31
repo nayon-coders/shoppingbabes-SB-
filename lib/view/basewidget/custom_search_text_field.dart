@@ -23,7 +23,7 @@ class CustomSearchTextField extends StatefulWidget {
   final Color? fillColor;
 
   const CustomSearchTextField(
-      {Key? key, this.hintText = 'Write something...',
+      {super.key, this.hintText = 'Write something...',
         this.controller,
         this.focusNode,
         this.nextFocus,
@@ -39,7 +39,7 @@ class CustomSearchTextField extends StatefulWidget {
         this.capitalization = TextCapitalization.none,
         this.isPassword = false,
         this.fillColor,
-      }) : super(key: key);
+      });
 
   @override
   CustomSearchTextFieldState createState() => CustomSearchTextFieldState();

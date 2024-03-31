@@ -13,7 +13,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/profile/profile_screen.d
 import 'package:provider/provider.dart';
 
 class MoreHeaderSection extends StatelessWidget {
-  const MoreHeaderSection({Key? key}) : super(key: key);
+  const MoreHeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {

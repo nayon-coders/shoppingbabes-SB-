@@ -25,10 +25,10 @@ class MessageModel {
 class Message {
   int? id;
   String? message;
-  int? sentByCustomer;
-  int? sentBySeller;
-  int? sentByAdmin;
-  int? seenByDeliveryMan;
+  bool? sentByCustomer;
+  bool? sentBySeller;
+  bool? sentByAdmin;
+  bool? seenByDeliveryMan;
   String? createdAt;
   DeliveryMan? deliveryMan;
   SellerInfo? sellerInfo;
@@ -54,7 +54,7 @@ class Message {
     sentBySeller = json['sent_by_seller'];
     sentByAdmin = json['sent_by_admin'];
     if(json['seen_by_delivery_man'] != null){
-      seenByDeliveryMan = int.parse(json['seen_by_delivery_man'].toString());
+      seenByDeliveryMan = json['seen_by_delivery_man'];
     }
 
     createdAt = json['created_at'];

@@ -14,7 +14,7 @@ import 'package:flutter_sixvalley_ecommerce/provider/product_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/top_seller_provider.dart';
 
 class SelectLanguageBottomSheet extends StatefulWidget {
-  const SelectLanguageBottomSheet({Key? key}) : super(key: key);
+  const SelectLanguageBottomSheet({super.key});
 
   @override
   State<SelectLanguageBottomSheet> createState() => _SelectLanguageBottomSheetState();

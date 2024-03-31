@@ -17,7 +17,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/wishlist/wishlist_screen
 import 'package:provider/provider.dart';
 
 class MoreHorizontalSection extends StatelessWidget {
-  const MoreHorizontalSection({Key? key}) : super(key: key);
+  const MoreHorizontalSection({super.key});
 
   @override
   Widget build(BuildContext context) {

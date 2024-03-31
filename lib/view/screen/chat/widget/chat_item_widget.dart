@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 class ChatItemWidget extends StatefulWidget {
   final Chat? chat;
   final ChatProvider chatProvider;
-  const ChatItemWidget({Key? key, this.chat, required this.chatProvider}) : super(key: key);
+  const ChatItemWidget({super.key, this.chat, required this.chatProvider});
 
   @override
   State<ChatItemWidget> createState() => _ChatItemWidgetState();

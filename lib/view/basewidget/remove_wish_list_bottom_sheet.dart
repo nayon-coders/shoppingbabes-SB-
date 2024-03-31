@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/compare/controller/compa
 import 'package:provider/provider.dart';
 
 class RemoveFromCompareListBottomSheet extends StatelessWidget {
-  const RemoveFromCompareListBottomSheet({Key? key}) : super(key: key);
+  const RemoveFromCompareListBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

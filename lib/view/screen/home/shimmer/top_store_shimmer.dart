@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class TopStoreShimmer extends StatelessWidget {
 
-  const TopStoreShimmer({Key? key, }) : super(key: key);
+  const TopStoreShimmer({super.key, });
 
   @override
   Widget build(BuildContext context) {

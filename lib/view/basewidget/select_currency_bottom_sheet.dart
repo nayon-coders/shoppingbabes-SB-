@@ -7,7 +7,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_button.dart';
 import 'package:provider/provider.dart';
 
 class SelectCurrencyBottomSheet extends StatefulWidget {
-  const SelectCurrencyBottomSheet({Key? key}) : super(key: key);
+  const SelectCurrencyBottomSheet({super.key});
 
   @override
   State<SelectCurrencyBottomSheet> createState() => _SelectCurrencyBottomSheetState();

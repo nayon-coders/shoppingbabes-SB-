@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 
 class SupportTicketWidget extends StatelessWidget {
   final SupportTicketModel supportTicketModel;
-   const SupportTicketWidget({Key? key, required this.supportTicketModel}) : super(key: key);
+   const SupportTicketWidget({super.key, required this.supportTicketModel});
 
   @override
   Widget build(BuildContext context) {

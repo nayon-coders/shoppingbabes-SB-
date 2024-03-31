@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 
 
 class LoyaltyPointScreen extends StatefulWidget {
-  const LoyaltyPointScreen({Key? key}) : super(key: key);
+  const LoyaltyPointScreen({super.key});
   @override
   State<LoyaltyPointScreen> createState() => _LoyaltyPointScreenState();
 }

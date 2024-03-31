@@ -27,7 +27,7 @@ class TopSellerProductScreen extends StatefulWidget {
   final String? name;
   final String? banner;
   final String? image;
-  const TopSellerProductScreen({Key? key, this.sellerId, this.temporaryClose, this.vacationStatus, this.vacationEndDate, this.vacationStartDate, this.name, this.banner, this.image}) : super(key: key);
+  const TopSellerProductScreen({super.key, this.sellerId, this.temporaryClose, this.vacationStatus, this.vacationEndDate, this.vacationStartDate, this.name, this.banner, this.image});
 
   @override
   State<TopSellerProductScreen> createState() => _TopSellerProductScreenState();

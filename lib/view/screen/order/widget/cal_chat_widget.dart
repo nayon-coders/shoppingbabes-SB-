@@ -13,7 +13,7 @@ class CallAndChatWidget extends StatelessWidget {
   final OrderProvider? orderProvider;
   final Orders? orderModel;
   final bool isSeller;
-  const CallAndChatWidget({Key? key, this.orderProvider, this.isSeller = false, this.orderModel}) : super(key: key);
+  const CallAndChatWidget({super.key, this.orderProvider, this.isSeller = false, this.orderModel});
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 
 class SellerView extends StatelessWidget {
   final String sellerId;
-  const SellerView({Key? key, required this.sellerId}) : super(key: key);
+  const SellerView({super.key, required this.sellerId});
 
   @override
   Widget build(BuildContext context) {

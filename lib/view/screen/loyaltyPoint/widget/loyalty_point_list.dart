@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 class LoyaltyPointListView extends StatelessWidget {
   final ScrollController? scrollController;
-  const LoyaltyPointListView({Key? key, this.scrollController}) : super(key: key);
+  const LoyaltyPointListView({super.key, this.scrollController});
 
   @override
   Widget build(BuildContext context) {

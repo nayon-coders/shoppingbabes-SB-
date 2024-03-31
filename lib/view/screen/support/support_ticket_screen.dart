@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 
 
 class SupportTicketScreen extends StatefulWidget {
-  const SupportTicketScreen({Key? key}) : super(key: key);
+  const SupportTicketScreen({super.key});
   @override
   State<SupportTicketScreen> createState() => _SupportTicketScreenState();
 }

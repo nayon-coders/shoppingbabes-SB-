@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/chat_provider.dart';
-import 'package:flutter_sixvalley_ecommerce/provider/product_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/custom_themes.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
@@ -13,7 +12,7 @@ import 'package:provider/provider.dart';
 class SearchInboxWidget extends StatefulWidget {
   final String? hintText;
 
-  const SearchInboxWidget({Key? key, required this.hintText}) : super(key: key);
+  const SearchInboxWidget({super.key, required this.hintText});
 
   @override
   State<SearchInboxWidget> createState() => _SearchInboxWidgetState();

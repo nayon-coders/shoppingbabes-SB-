@@ -19,7 +19,7 @@ import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
 class ReferAndEarnScreen extends StatelessWidget {
-  const ReferAndEarnScreen({Key? key}) : super(key: key);
+  const ReferAndEarnScreen({super.key});
   @override
   Widget build(BuildContext context) {
     final List<String> shareItem = [Images.share];

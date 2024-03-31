@@ -8,7 +8,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
 
 class ReferHintView extends StatelessWidget {
   final List<String> hintList;
-  const ReferHintView({Key? key, required this.hintList}) : super(key: key);
+  const ReferHintView({super.key, required this.hintList});
 
   @override
   Widget build(BuildContext context) {

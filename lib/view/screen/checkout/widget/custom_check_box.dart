@@ -12,7 +12,7 @@ class CustomCheckBox extends StatelessWidget {
   final String? icon;
   final String name;
   final String title;
-  const CustomCheckBox({Key? key,  required this.index, this.isDigital =  false, this.icon, required this.name, required this.title}) : super(key: key);
+  const CustomCheckBox({super.key,  required this.index, this.isDigital =  false, this.icon, required this.name, required this.title});
 
   @override
   Widget build(BuildContext context) {

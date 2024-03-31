@@ -15,7 +15,7 @@ class FeaturedProductView extends StatelessWidget {
   final ScrollController? scrollController;
   final bool isHome;
 
-  const FeaturedProductView({Key? key,  this.scrollController, required this.isHome}) : super(key: key);
+  const FeaturedProductView({super.key,  this.scrollController, required this.isHome});
 
   @override
   Widget build(BuildContext context) {

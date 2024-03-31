@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 
 class ZipSearchDialog extends StatelessWidget {
-  const ZipSearchDialog({Key? key}) : super(key: key);
+  const ZipSearchDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

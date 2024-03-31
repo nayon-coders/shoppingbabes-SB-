@@ -18,7 +18,7 @@ import 'package:provider/provider.dart';
 
 class SupportConversationScreen extends StatelessWidget {
   final SupportTicketModel supportTicketModel;
-  SupportConversationScreen({Key? key, required this.supportTicketModel}) : super(key: key);
+  SupportConversationScreen({super.key, required this.supportTicketModel});
 
   final TextEditingController _controller = TextEditingController();
 

@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 
 class OrderWidget extends StatelessWidget {
   final Orders? orderModel;
-  const OrderWidget({Key? key, this.orderModel}) : super(key: key);
+  const OrderWidget({super.key, this.orderModel});
 
   @override
   Widget build(BuildContext context) {

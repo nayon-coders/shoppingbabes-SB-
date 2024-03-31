@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 class CouponBottomSheet extends StatefulWidget {
   final double orderAmount;
-  const CouponBottomSheet({Key? key, required this.orderAmount}) : super(key: key);
+  const CouponBottomSheet({super.key, required this.orderAmount});
 
   @override
   State<CouponBottomSheet> createState() => _CouponBottomSheetState();

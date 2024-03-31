@@ -5,7 +5,7 @@ class ShippingMethodModel {
   String? title;
   double? cost;
   String? duration;
-  int? status;
+  bool? status;
   String? createdAt;
   String? updatedAt;
 
@@ -27,7 +27,7 @@ class ShippingMethodModel {
     creatorId = json['creator_id'];
     creatorType = json['creator_type'];
     title = json['title'];
-    cost = json['cost'].toDouble();
+    cost = double.parse("${json['cost']}");
     duration = json['duration'];
     status = json['status'];
     createdAt = json['created_at'];

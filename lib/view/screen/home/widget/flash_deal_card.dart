@@ -18,7 +18,7 @@ class FlashDealCard extends StatelessWidget {
   final Product product;
   final int index;
   final FlashDealProvider megaProvider;
-  const FlashDealCard({Key? key, required this.product, required this.megaProvider, required this.index}) : super(key: key);
+  const FlashDealCard({super.key, required this.product, required this.megaProvider, required this.index});
 
   @override
   Widget build(BuildContext context) {

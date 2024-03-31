@@ -9,7 +9,7 @@ class OrderProductList extends StatelessWidget {
   final String? orderType;
   final bool fromTrack;
   final int? isGuest;
-  const OrderProductList({Key? key, this.order, this.orderType,  this.fromTrack = false, this.isGuest}) : super(key: key);
+  const OrderProductList({super.key, this.order, this.orderType,  this.fromTrack = false, this.isGuest});
 
   @override
   Widget build(BuildContext context) {

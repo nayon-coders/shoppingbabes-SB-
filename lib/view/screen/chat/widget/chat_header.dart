@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 
 class ChatHeader extends StatefulWidget {
-  const ChatHeader({Key? key}) : super(key: key);
+  const ChatHeader({super.key});
 
   @override
   State<ChatHeader> createState() => _ChatHeaderState();

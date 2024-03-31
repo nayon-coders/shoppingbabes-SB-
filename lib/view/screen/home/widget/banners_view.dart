@@ -13,7 +13,7 @@ import 'package:shimmer/shimmer.dart';
 
 
 class BannersView extends StatelessWidget {
-  const BannersView({Key? key}) : super(key: key);
+  const BannersView({super.key});
 
   @override
   Widget build(BuildContext context) {

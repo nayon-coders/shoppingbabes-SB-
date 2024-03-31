@@ -9,7 +9,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/flash_deals_
 import 'package:provider/provider.dart';
 
 class FlashDealScreen extends StatefulWidget {
-  const FlashDealScreen({Key? key}) : super(key: key);
+  const FlashDealScreen({super.key});
 
 
   @override

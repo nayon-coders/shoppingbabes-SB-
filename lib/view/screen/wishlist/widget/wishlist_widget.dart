@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 class WishListWidget extends StatelessWidget {
   final WishlistModel? wishlistModel;
   final int? index;
-  const WishListWidget({Key? key, this.wishlistModel, this.index}) : super(key: key);
+  const WishListWidget({super.key, this.wishlistModel, this.index});
 
   @override
   Widget build(BuildContext context) {

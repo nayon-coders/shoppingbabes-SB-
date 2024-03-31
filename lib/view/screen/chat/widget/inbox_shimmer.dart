@@ -6,7 +6,7 @@ import 'package:shimmer/shimmer.dart';
 
 
 class InboxShimmer extends StatelessWidget {
-  const InboxShimmer({Key? key}) : super(key: key);
+  const InboxShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

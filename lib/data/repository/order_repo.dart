@@ -20,7 +20,17 @@ class OrderRepo {
   final DioClient? dioClient;
 
   OrderRepo({required this.dioClient});
+ Future<ApiResponse> getShippingValidity(dynamic data) async {
+    try {
+      final response =
+          await dioClient!.post(AppConstants.shipingValidity, data: data);
 
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      //  Logger().f(e.response!.data['errors'][0]);
+      return ApiResponse.withError(MyApiErrorHandler.getMessage(e));
+    }
+  }
   Future<ApiResponse> getOrderList(int offset, String status, {String? type}) async {
     try {
       final response = await dioClient!.get('${AppConstants.orderUri}$offset&status=$status&type=$type');
@@ -31,6 +41,7 @@ class OrderRepo {
   }
 
   Future<ApiResponse> getOrderDetails(String orderID) async {
+   print("order ");
     try {
       final response = await dioClient!.get(
         AppConstants.orderDetailsUri+orderID);
@@ -41,6 +52,7 @@ class OrderRepo {
   }
 
   Future<ApiResponse> getOrderFromOrderId(String orderID) async {
+   print("orderID === ${orderID}");
     try {
       final response = await dioClient!.get('${AppConstants.getOrderFromOrderId}$orderID&guest_id=${Provider.of<AuthProvider>(Get.context!, listen: false).getGuestToken()}');
       return ApiResponse.withSuccess(response);
@@ -63,14 +75,17 @@ class OrderRepo {
 
     try {
       final response = await dioClient!.get('${AppConstants.orderPlaceUri}?address_id=$addressID&coupon_code=$couponCode&coupon_discount=$couponDiscountAmount&billing_address_id=$billingAddressId&order_note=$orderNote&guest_id=${Provider.of<AuthProvider>(Get.context!, listen: false).getGuestToken()}&is_guest=${Provider.of<AuthProvider>(Get.context!, listen: false).isLoggedIn()? 0 :1 }');
+      print("response == ${response.statusCode}");
+      print("response == ${response.data}");
       return ApiResponse.withSuccess(response);
     } catch (e) {
-      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+      print("error for payment === $e");
+      return ApiResponse.withError(ApiErrorHandler.getMessage("dsfadsfsd"));
     }
   }
 
 
-  Future<ApiResponse> offlinePaymentPlaceOrder(String? addressID, String? couponCode, String? couponDiscountAmount, String? billingAddressId, String? orderNote, List <String?> typeKey, List<String> typeValue, int? id, String name, String? paymentNote) async {
+  Future<ApiResponse> offlinePaymentPlaceOrder(String? addressID, String? couponCode, String? couponDiscountAmount, String? billingAddressId, String? orderNote, List <String?> typeKey, List<String> typeValue, int? id, String name, String? paymentNote, String? shippingId) async {
     try {
       Map<String?, String> fields = {};
       Map<String?, String> info = {};
@@ -84,6 +99,7 @@ class OrderRepo {
       fields.addAll(<String, String>{
 
         "method_informations" : base64.encode(utf8.encode(jsonEncode(info))),
+        "shipping_method_id" : shippingId.toString(),
         'method_name': name,
         'method_id': id.toString(),
         'payment_note' : paymentNote??'',
@@ -110,7 +126,7 @@ class OrderRepo {
   }
 
 
-  Future<ApiResponse> walletPaymentPlaceOrder(String? addressID, String? couponCode,String? couponDiscountAmount, String? billingAddressId, String? orderNote) async {
+  Future<ApiResponse> walletPaymentPlaceOrder(String? addressID, String? couponCode,String? couponDiscountAmount, String? billingAddressId, String? orderNote, String? shippingId) async {
     try {
       final response = await dioClient!.get('${AppConstants.walletPayment}?address_id=$addressID&coupon_code=$couponCode&coupon_discount=$couponDiscountAmount&billing_address_id=$billingAddressId&order_note=$orderNote&guest_id=${Provider.of<AuthProvider>(Get.context!, listen: false).getGuestToken()}&is_guest=${Provider.of<AuthProvider>(Get.context!, listen: false).isLoggedIn()? 0 :1}',);
       return ApiResponse.withSuccess(response);
@@ -204,11 +220,15 @@ class OrderRepo {
       String? couponCode,
       String? couponDiscount,
       String? paymentMethod,
+      String? shippingCost,
+      String? shippingId,
       ) async {
 
     try {
       final response = await dioClient!.post(AppConstants.digitalPayment, data: {
         "order_note": orderNote,
+        "shipping_method_id": shippingId,
+        "shipping_cost" : shippingCost,
         "customer_id":  customerId,
         "address_id": addressId,
         "billing_address_id": billingAddressId,

@@ -25,7 +25,7 @@ import 'package:provider/provider.dart';
 
 class WalletScreen extends StatefulWidget {
   final bool isBacButtonExist;
-  const WalletScreen({Key? key, this.isBacButtonExist = true}) : super(key: key);
+  const WalletScreen({super.key, this.isBacButtonExist = true});
 
   @override
   State<WalletScreen> createState() => _WalletScreenState();

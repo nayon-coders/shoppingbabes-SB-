@@ -17,7 +17,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/search/widget/partial_ma
 import 'package:provider/provider.dart';
 
 class CompareProductScreen extends StatefulWidget {
-  const CompareProductScreen({Key? key}) : super(key: key);
+  const CompareProductScreen({super.key});
 
   @override
   State<CompareProductScreen> createState() => _CompareProductScreenState();
@@ -118,7 +118,7 @@ class _CompareProductScreenState extends State<CompareProductScreen> {
 class CompareCard extends StatelessWidget {
   final Product? product;
   final int? compareId;
-  const CompareCard({Key? key, required this.product, this.compareId}) : super(key: key);
+  const CompareCard({super.key, required this.product, this.compareId});
 
   @override
   Widget build(BuildContext context) {

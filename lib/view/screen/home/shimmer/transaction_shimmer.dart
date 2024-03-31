@@ -3,7 +3,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
 import 'package:shimmer/shimmer.dart';
 
 class TransactionShimmer extends StatelessWidget {
-  const TransactionShimmer({Key? key}) : super(key: key);
+  const TransactionShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

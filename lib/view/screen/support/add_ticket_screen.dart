@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sixvalley_ecommerce/data/model/body/support_ticket_body.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
@@ -19,7 +18,7 @@ import 'package:provider/provider.dart';
 
 class AddTicketScreen extends StatefulWidget {
   final TicketModel ticketModel;
-  const AddTicketScreen({Key? key, required this.ticketModel}) : super(key: key);
+  const AddTicketScreen({super.key, required this.ticketModel});
 
   @override
   AddTicketScreenState createState() => AddTicketScreenState();
@@ -137,7 +136,7 @@ class AddTicketScreenState extends State<AddTicketScreen> {
                       child: Container(decoration: const BoxDecoration(color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(20)),),
                         child: ClipRRect(borderRadius: const BorderRadius.all(Radius.circular(Dimensions.paddingSizeExtraSmall)),
-                          child:  Image.file(File(supportTicketProvider.pickedImageFileStored![index].path),
+                          child:  Image.file(File(supportTicketProvider.pickedImageFileStored[index].path),
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.width/4.3,
                             fit: BoxFit.cover,),) ,),

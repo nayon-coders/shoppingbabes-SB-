@@ -35,9 +35,9 @@ class Orders {
   String? paymentNote;
   double? orderAmount;
   String? adminCommission;
-  String? isPause;
+  bool? isPause;
   String? cause;
-  int? shippingAddress;
+  String? shippingAddress;
   String? createdAt;
   String? updatedAt;
   double? discountAmount;
@@ -46,10 +46,10 @@ class Orders {
   String? couponDiscountBearer;
   int? shippingMethodId;
   double? shippingCost;
-  int? isShippingFree;
+  bool? isShippingFree;
   String? orderGroupId;
   String? verificationCode;
-  int? verificationStatus;
+  bool? verificationStatus;
   int? sellerId;
   String? sellerIs;
   ShippingAddressData? shippingAddressData;
@@ -63,7 +63,7 @@ class Orders {
   double? extraDiscount;
   String? extraDiscountType;
   String? freeDeliveryBearer;
-  int? checked;
+  bool? checked;
   String? shippingType;
   String? deliveryType;
   String? deliveryServiceName;
@@ -153,10 +153,10 @@ class Orders {
     couponDiscountBearer = json['coupon_discount_bearer'];
     shippingMethodId = json['shipping_method_id'];
     shippingCost = json['shipping_cost'].toDouble();
-    isShippingFree = int.parse(json['is_shipping_free'].toString());
+    isShippingFree = json['is_shipping_free'];
     orderGroupId = json['order_group_id'];
     verificationCode = json['verification_code'];
-    verificationStatus = int.parse(json['verification_status'].toString());
+    verificationStatus = json['verification_status'];
     sellerId = json['seller_id'];
     sellerIs = json['seller_is'];
     shippingAddressData = json['shipping_address_data'] != null ? ShippingAddressData.fromJson(json['shipping_address_data']) : null;
@@ -175,7 +175,7 @@ class Orders {
     extraDiscount = json['extra_discount'].toDouble();
     extraDiscountType = json['extra_discount_type'];
     freeDeliveryBearer = json['free_delivery_bearer'];
-    checked = int.parse( json['checked'].toString());
+    checked = json['checked'];
     shippingType = json['shipping_type'];
     deliveryType = json['delivery_type'];
     deliveryServiceName = json['delivery_service_name'];
@@ -213,7 +213,7 @@ class BillingAddressData {
   String? country;
   String? latitude;
   String? longitude;
-  int? isBilling;
+  bool? isBilling;
 
   BillingAddressData(
       {this.id,
@@ -233,7 +233,7 @@ class BillingAddressData {
 
   BillingAddressData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    customerId = json['customer_id'];
+    customerId = int.parse("${json['customer_id']}");
     contactPersonName = json['contact_person_name'];
     addressType = json['address_type'];
     address = json['address'];
@@ -345,7 +345,7 @@ class ShippingAddressData {
 
   ShippingAddressData.fromJson(Map<String, dynamic> json) {
     _id = json['id'];
-    _customerId = json['customer_id'];
+    _customerId = int.parse("${json['customer_id']}");
     _contactPersonName = json['contact_person_name'];
     _addressType = json['address_type'];
     _address = json['address'];

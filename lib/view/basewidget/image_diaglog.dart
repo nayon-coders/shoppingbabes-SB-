@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_image.dart';
 
 class ImageDialog extends StatelessWidget {
   final String imageUrl;
-  const ImageDialog({Key? key, required this.imageUrl}) : super(key: key);
+  const ImageDialog({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {

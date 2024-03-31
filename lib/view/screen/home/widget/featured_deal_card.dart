@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class FeaturedDealCard extends StatelessWidget {
   final Product product;
   final bool isHomePage;
-  const FeaturedDealCard({Key? key, required this.product, required this.isHomePage}) : super(key: key);
+  const FeaturedDealCard({super.key, required this.product, required this.isHomePage});
 
   @override
   Widget build(BuildContext context) {

@@ -57,7 +57,7 @@ import 'package:provider/provider.dart';
 
 
 class FashionThemeHomePage extends StatefulWidget {
-  const FashionThemeHomePage({Key? key}) : super(key: key);
+  const FashionThemeHomePage({super.key});
 
   @override
   State<FashionThemeHomePage> createState() => _FashionThemeHomePageState();

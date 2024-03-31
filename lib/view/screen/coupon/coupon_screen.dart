@@ -12,7 +12,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/order/widget/order_shimm
 import 'package:provider/provider.dart';
 
 class CouponList extends StatefulWidget {
-  const CouponList({Key? key}) : super(key: key);
+  const CouponList({super.key});
 
   @override
   State<CouponList> createState() => _CouponListState();

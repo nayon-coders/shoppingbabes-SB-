@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 
 class ShippingAndBillingWidget extends StatelessWidget {
   final OrderProvider orderProvider;
-  const ShippingAndBillingWidget({Key? key, required this.orderProvider}) : super(key: key);
+  const ShippingAndBillingWidget({super.key, required this.orderProvider});
 
   @override
   Widget build(BuildContext context) {

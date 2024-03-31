@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class ProductDetailsShimmer extends StatelessWidget {
 
-  const ProductDetailsShimmer({Key? key, }) : super(key: key);
+  const ProductDetailsShimmer({super.key, });
 
   @override
   Widget build(BuildContext context) {

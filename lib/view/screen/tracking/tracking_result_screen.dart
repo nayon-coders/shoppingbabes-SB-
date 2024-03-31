@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 
 class TrackingResultScreen extends StatefulWidget {
   final String orderID;
-  const TrackingResultScreen({Key? key, required this.orderID}) : super(key: key);
+  const TrackingResultScreen({super.key, required this.orderID});
 
   @override
   State<TrackingResultScreen> createState() => _TrackingResultScreenState();
@@ -101,8 +101,8 @@ class CustomStepper extends StatelessWidget {
   final String icon;
   final bool checked;
   final String? dateTime;
-  const CustomStepper({Key? key, required this.title,
-    this.isLastItem = false, required this.icon, this.checked = false, this.dateTime}) : super(key: key);
+  const CustomStepper({super.key, required this.title,
+    this.isLastItem = false, required this.icon, this.checked = false, this.dateTime});
 
   @override
   Widget build(BuildContext context) {

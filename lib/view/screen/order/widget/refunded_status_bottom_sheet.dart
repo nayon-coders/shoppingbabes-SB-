@@ -19,7 +19,7 @@ class RefundResultBottomSheet extends StatefulWidget {
   final Product? product;
   final int? orderDetailsId;
   final OrderDetailsModel? orderDetailsModel;
-  const RefundResultBottomSheet({Key? key, required this.product, required this.orderDetailsId, this.orderDetailsModel}) : super(key: key);
+  const RefundResultBottomSheet({super.key, required this.product, required this.orderDetailsId, this.orderDetailsModel});
 
   @override
   RefundResultBottomSheetState createState() => RefundResultBottomSheetState();

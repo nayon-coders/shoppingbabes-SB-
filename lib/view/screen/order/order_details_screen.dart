@@ -29,7 +29,7 @@ class OrderDetailsScreen extends StatefulWidget {
   final int? orderId;
   final String? phone;
   final bool fromTrack;
-  const OrderDetailsScreen({Key? key, required this.orderId, this.isNotification = false, this.phone,  this.fromTrack = false}) : super(key: key);
+  const OrderDetailsScreen({super.key, required this.orderId, this.isNotification = false, this.phone,  this.fromTrack = false});
 
   @override
   State<OrderDetailsScreen> createState() => _OrderDetailsScreenState();

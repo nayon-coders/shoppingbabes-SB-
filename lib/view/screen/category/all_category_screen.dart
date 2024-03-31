@@ -14,7 +14,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/product/brand_and_catego
 import 'package:provider/provider.dart';
 
 class AllCategoryScreen extends StatelessWidget {
-  const AllCategoryScreen({Key? key}) : super(key: key);
+  const AllCategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +180,7 @@ class CategoryItem extends StatelessWidget {
   final String? title;
   final String? icon;
   final bool isSelected;
-  const CategoryItem({Key? key, required this.title, required this.icon, required this.isSelected}) : super(key: key);
+  const CategoryItem({super.key, required this.title, required this.icon, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {

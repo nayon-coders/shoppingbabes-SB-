@@ -12,7 +12,7 @@ class SuccessDialog extends StatelessWidget {
   final String? title;
   final String? description;
   final Function()? onTap;
-  const SuccessDialog({Key? key, this.isFailed = false, this.rotateAngle = 0, required this.icon, required this.title, required this.description, this.onTap}) : super(key: key);
+  const SuccessDialog({super.key, this.isFailed = false, this.rotateAngle = 0, required this.icon, required this.title, required this.description, this.onTap});
 
   @override
   Widget build(BuildContext context) {

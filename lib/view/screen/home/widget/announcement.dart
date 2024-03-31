@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'marque_text.dart';
 class AnnouncementScreen extends StatelessWidget {
   final Announcement? announcement;
-  const AnnouncementScreen({Key? key, this.announcement}) : super(key: key);
+  const AnnouncementScreen({super.key, this.announcement});
 
   @override
   Widget build(BuildContext context) {

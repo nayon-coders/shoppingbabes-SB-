@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class ChatTypeButton extends StatelessWidget {
   final String? text;
   final int index;
-  const ChatTypeButton({Key? key, required this.text, required this.index}) : super(key: key);
+  const ChatTypeButton({super.key, required this.text, required this.index});
 
   @override
   Widget build(BuildContext context) {

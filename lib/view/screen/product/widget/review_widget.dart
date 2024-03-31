@@ -14,7 +14,7 @@ import 'package:shimmer/shimmer.dart';
 
 class ReviewWidget extends StatelessWidget {
   final ReviewModel reviewModel;
-  const ReviewWidget({Key? key, required this.reviewModel}) : super(key: key);
+  const ReviewWidget({super.key, required this.reviewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +105,7 @@ class ReviewWidget extends StatelessWidget {
 }
 
 class ReviewShimmer extends StatelessWidget {
-  const ReviewShimmer({Key? key}) : super(key: key);
+  const ReviewShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

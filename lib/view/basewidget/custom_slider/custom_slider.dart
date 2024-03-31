@@ -36,13 +36,12 @@ class CarouselSlider extends StatefulWidget {
         required this.options,
         this.disableGesture,
         CarouselController? carouselController,
-        Key? key})
+        super.key})
       : itemBuilder = null,
         itemCount = items != null ? items.length : 0,
         _carouselController = carouselController != null
             ? carouselController as CarouselControllerImpl
-            : CarouselController() as CarouselControllerImpl,
-        super(key: key);
+            : CarouselController() as CarouselControllerImpl;
 
   /// The on demand item builder constructor
   CarouselSlider.builder(
@@ -51,12 +50,11 @@ class CarouselSlider extends StatefulWidget {
         required this.options,
         this.disableGesture,
         CarouselController? carouselController,
-        Key? key})
+        super.key})
       : items = null,
         _carouselController = carouselController != null
             ? carouselController as CarouselControllerImpl
-            : CarouselController() as CarouselControllerImpl,
-        super(key: key);
+            : CarouselController() as CarouselControllerImpl;
 
   @override
   CarouselSliderState createState() => CarouselSliderState(_carouselController);

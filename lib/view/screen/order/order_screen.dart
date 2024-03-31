@@ -17,7 +17,7 @@ import 'package:provider/provider.dart';
 
 class OrderScreen extends StatefulWidget {
   final bool isBacButtonExist;
-  const OrderScreen({Key? key, this.isBacButtonExist = true}) : super(key: key);
+  const OrderScreen({super.key, this.isBacButtonExist = true});
 
   @override
   State<OrderScreen> createState() => _OrderScreenState();

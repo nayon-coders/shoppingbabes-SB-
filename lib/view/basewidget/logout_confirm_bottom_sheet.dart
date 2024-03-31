@@ -10,7 +10,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/auth/auth_screen.dart';
 import 'package:provider/provider.dart';
 
 class LogoutCustomBottomSheet extends StatelessWidget {
-  const LogoutCustomBottomSheet({Key? key}) : super(key: key);
+  const LogoutCustomBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

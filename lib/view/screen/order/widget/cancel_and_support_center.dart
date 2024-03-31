@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 class CancelAndSupport extends StatelessWidget {
   final Orders? orderModel;
   final bool fromNotification;
-  const CancelAndSupport({Key? key, this.orderModel, this.fromNotification = false}) : super(key: key);
+  const CancelAndSupport({super.key, this.orderModel, this.fromNotification = false});
 
   @override
   Widget build(BuildContext context) {

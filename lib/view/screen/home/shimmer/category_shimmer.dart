@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 
 class CategoryShimmer extends StatelessWidget {
-  const CategoryShimmer({Key? key}) : super(key: key);
+  const CategoryShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
   final String? leftIcon;
   final double? borderWidth;
 
-  const CustomButton({Key? key, this.onTap, required this.buttonText, this.isBuy= false, this.isBorder = false, this.backgroundColor, this.radius, this.textColor, this.fontSize, this.leftIcon, this.borderColor, this.borderWidth}) : super(key: key);
+  const CustomButton({super.key, this.onTap, required this.buttonText, this.isBuy= false, this.isBorder = false, this.backgroundColor, this.radius, this.textColor, this.fontSize, this.leftIcon, this.borderColor, this.borderWidth});
 
   @override
   Widget build(BuildContext context) {

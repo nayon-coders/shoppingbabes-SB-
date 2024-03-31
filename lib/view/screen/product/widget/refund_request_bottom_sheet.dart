@@ -17,7 +17,7 @@ import 'package:provider/provider.dart';
 class RefundBottomSheet extends StatefulWidget {
   final Product? product;
   final int? orderDetailsId;
-  const RefundBottomSheet({Key? key, required this.product, required this.orderDetailsId}) : super(key: key);
+  const RefundBottomSheet({super.key, required this.product, required this.orderDetailsId});
 
   @override
   RefundBottomSheetState createState() => RefundBottomSheetState();

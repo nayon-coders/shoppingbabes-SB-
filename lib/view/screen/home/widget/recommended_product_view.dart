@@ -15,7 +15,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/product/widget/favourite
 import 'package:provider/provider.dart';
 class RecommendedProductView extends StatelessWidget {
   final bool fromAsterTheme;
-  const RecommendedProductView({Key? key,  this.fromAsterTheme = false}) : super(key: key);
+  const RecommendedProductView({super.key,  this.fromAsterTheme = false});
 
 
   @override

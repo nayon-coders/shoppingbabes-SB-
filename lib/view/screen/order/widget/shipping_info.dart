@@ -6,7 +6,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 
 class ShippingInfo extends StatelessWidget {
   final OrderProvider? order;
-  const ShippingInfo({Key? key, this.order}) : super(key: key);
+  const ShippingInfo({super.key, this.order});
 
   @override
   Widget build(BuildContext context) {

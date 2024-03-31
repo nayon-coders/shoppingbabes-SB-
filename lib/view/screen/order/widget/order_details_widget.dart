@@ -30,7 +30,7 @@ class OrderDetailsWidget extends StatefulWidget {
   final Function callback;
   final bool fromTrack;
   final int? isGuest;
-  const OrderDetailsWidget({Key? key, required this.orderDetailsModel, required this.callback, required this.orderType, required this.paymentStatus,  this.fromTrack = false, this.isGuest}) : super(key: key);
+  const OrderDetailsWidget({super.key, required this.orderDetailsModel, required this.callback, required this.orderType, required this.paymentStatus,  this.fromTrack = false, this.isGuest});
 
   @override
   State<OrderDetailsWidget> createState() => _OrderDetailsWidgetState();

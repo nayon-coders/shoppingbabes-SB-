@@ -21,7 +21,7 @@ import 'package:provider/provider.dart';
 class CartBottomSheet extends StatefulWidget {
   final pd.ProductDetailsModel? product;
   final Function? callback;
-  const CartBottomSheet({Key? key, required this.product, this.callback}) : super(key: key);
+  const CartBottomSheet({super.key, required this.product, this.callback});
 
   @override
   CartBottomSheetState createState() => CartBottomSheetState();
@@ -83,7 +83,7 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                   }
                 }
               }
-              double? price = widget.product!.unitPrice;
+              double? price = double.parse("${widget.product!.unitPrice}");
               int? stock = widget.product!.currentStock;
               variationType = variationType.replaceAll(' ', '');
               for(Variation variation in widget.product!.variation!) {
@@ -96,7 +96,7 @@ class CartBottomSheetState extends State<CartBottomSheet> {
               }
 
 
-              double priceWithDiscount = PriceConverter.convertWithDiscount(context, price, widget.product!.discount, widget.product!.discountType)!;
+              double priceWithDiscount = PriceConverter.convertWithDiscount(context, price, double.parse("${widget.product!.discount}"), widget.product!.discountType)!;
               double priceWithQuantity = priceWithDiscount * details.quantity!;
 
               double total = 0, avg = 0;
@@ -147,8 +147,8 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                               decoration: BoxDecoration(color:Theme.of(context).colorScheme.error,
                                   borderRadius: const BorderRadius.vertical(top: Radius.circular(Dimensions.paddingSizeExtraSmall))),
                               child: Padding(padding: const EdgeInsets.all(5),
-                                  child: Text(PriceConverter.percentageCalculation(context, widget.product!.unitPrice,
-                                      widget.product!.discount, widget.product!.discountType),
+                                  child: Text(PriceConverter.percentageCalculation(context, double.parse("${widget.product!.unitPrice}"),
+                                      double.parse("${widget.product!.discount}"), widget.product!.discountType),
                                       style: titilliumRegular.copyWith(color: Colors.white,
                                           fontSize: Dimensions.fontSizeDefault))),
                             ) : const SizedBox(width: 93),
@@ -173,12 +173,12 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                           Row(children: [
                             const SizedBox(width: Dimensions.paddingSizeDefault),
                             widget.product!.discount! > 0 ? Text(
-                              PriceConverter.convertPrice(context, widget.product!.unitPrice),
+                              PriceConverter.convertPrice(context, double.parse("${widget.product!.unitPrice}")),
                               style: titilliumRegular.copyWith(color: ColorResources.getRed(context),
                                   decoration: TextDecoration.lineThrough),
                             ) : const SizedBox(),
                             const SizedBox(width: Dimensions.paddingSizeDefault),
-                            Text(PriceConverter.convertPrice(context, widget.product!.unitPrice, discountType: widget.product!.discountType, discount: widget.product!.discount),
+                            Text(PriceConverter.convertPrice(context, double.parse("${widget.product!.unitPrice}"), discountType: widget.product!.discountType, discount: double.parse("${widget.product!.discount}")),
                               style: titilliumRegular.copyWith(color: ColorResources.getPrimary(context), fontSize: Dimensions.fontSizeExtraLarge),),],),]),),]),],),
                 ),
 
@@ -401,12 +401,12 @@ class QuantityButton extends StatelessWidget {
   final int? minimumOrderQuantity;
   final bool digitalProduct;
 
-  const QuantityButton({Key? key,
+  const QuantityButton({super.key,
     required this.isIncrement,
     required this.quantity,
     required this.stock,
     this.isCartWidget = false,required this.minimumOrderQuantity,required this.digitalProduct,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

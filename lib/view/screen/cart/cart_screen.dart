@@ -11,9 +11,7 @@ import 'package:flutter_sixvalley_ecommerce/provider/theme_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/custom_themes.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/images.dart';
-import 'package:flutter_sixvalley_ecommerce/view/basewidget/animated_custom_dialog.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_app_bar.dart';
-import 'package:flutter_sixvalley_ecommerce/view/basewidget/guest_dialog.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/no_internet_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/not_logged_in_bottom_sheet.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/show_custom_snakbar.dart';
@@ -27,7 +25,7 @@ import 'package:provider/provider.dart';
 class CartScreen extends StatefulWidget {
   final bool fromCheckout;
   final int sellerId;
-  const CartScreen({Key? key, this.fromCheckout = false, this.sellerId = 1}) : super(key: key);
+  const CartScreen({super.key, this.fromCheckout = false, this.sellerId = 1});
 
   @override
   CartScreenState createState() => CartScreenState();
@@ -51,11 +49,20 @@ class CartScreenState extends State<CartScreen> {
     super.initState();
   }
 
+  //get back from select the delivery
+  var _selectedDeliveryMethod;
+  double _deliveryFee = 0.0;
+  List<int> _sellerProductsList = [];
+  int qty = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Consumer<SplashProvider>(
       builder: (context, configProvider,_) {
         return Consumer<CartProvider>(builder: (context, cart, child) {
+          _sellerProductsList.clear();
+          qty = 0;
           double amount = 0.0;
           double shippingAmount = 0.0;
           double discount = 0.0;
@@ -85,6 +92,11 @@ class CartScreenState extends State<CartScreen> {
               sellerGroupList.add(cart);
             }
           }
+
+
+
+
+
 
 
           // totalQuantity = cartList.length;
@@ -146,7 +158,6 @@ class CartScreenState extends State<CartScreen> {
             Consumer<SplashProvider>(
               builder: (context, configProvider,_) {
 
-
                 return Container(height: cartList.isNotEmpty? 130 : 0, padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge,
                     vertical: Dimensions.paddingSizeDefault),
 
@@ -165,17 +176,21 @@ class CartScreenState extends State<CartScreen> {
                             Text('${getTranslated('inc_vat_tax', context)}', style: titilliumSemiBold.copyWith(
                                 fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor))]),
 
-                        Text(PriceConverter.convertPrice(context, amount+tax+shippingAmount-freeDeliveryAmountDiscount), style: titilliumSemiBold.copyWith(
+                        Text(PriceConverter.convertPrice(context, amount+tax+_deliveryFee-freeDeliveryAmountDiscount), style: titilliumSemiBold.copyWith(
                             color: Provider.of<ThemeProvider>(context, listen: false).darkTheme? Theme.of(context).hintColor : Theme.of(context).primaryColor,
                             fontSize: Dimensions.fontSizeLarge))])),
-
-
 
 
                     InkWell(onTap: () {
                           bool hasNull = false;
                           bool minimum = false;
                           double total = 0;
+                          _deliveryFee = 0.0;
+
+                          for(var i in sellerGroupList){
+                            _deliveryFee = double.parse("${_selectedDeliveryMethod["cost"]}");
+                          }
+                          _deliveryFee = _deliveryFee + (double.parse("${_selectedDeliveryMethod["cost"]}") / 2) * qty;
 
 
                            if(configProvider.configModel!.shippingMethod =='sellerwise_shipping'){
@@ -192,7 +207,8 @@ class CartScreenState extends State<CartScreen> {
 
                             for(int index = 0; index < cartProductList.length; index++) {
                               for(CartModel cart in cartProductList[index]) {
-                                total += (cart.price! - cart.discount!) * cart.quantity! + tax+ shippingAmount;
+                                //total += (cart.price! - cart.discount!) * cart.quantity! + tax+ shippingAmount;
+                                total += (cart.price! - cart.discount!) * cart.quantity! + tax+ _deliveryFee;
                                 if(total< cart.minimumOrderAmountInfo!) {
                                   minimum = true;
                                 }
@@ -213,19 +229,30 @@ class CartScreenState extends State<CartScreen> {
                             showCustomSnackBar(getTranslated('select_all_shipping_method', context), context);
                           }
 
-                          else if(cart.chosenShippingList.isEmpty &&
-                              configProvider.configModel!.shippingMethod !='sellerwise_shipping' &&
-                              configProvider.configModel!.inhouseSelectedShippingType =='order_wise' && !onlyDigital){
+                          // else if(cart.chosenShippingList.isEmpty &&
+                          //     configProvider.configModel!.shippingMethod !='sellerwise_shipping' &&
+                          //     configProvider.configModel!.inhouseSelectedShippingType =='order_wise' && !onlyDigital){
+                          //   showCustomSnackBar(getTranslated('select_all_shipping_method', context), context);
+                          // }else if(minimum){
+                          //   showCustomSnackBar(getTranslated('some_shop_not_full_fill_minimum_order_amount', context), context);
+                          // }
+
+                          else if(_selectedDeliveryMethod == null){
                             showCustomSnackBar(getTranslated('select_all_shipping_method', context), context);
-                          }else if(minimum){
-                            showCustomSnackBar(getTranslated('some_shop_not_full_fill_minimum_order_amount', context), context);
                           }
 
 
                           else {
+                            _calculateDeliveryFee(cost: _selectedDeliveryMethod["cost"]);
+
                             Navigator.push(context, MaterialPageRoute(builder: (_) => CheckoutScreen(quantity: totalQuantity,
-                              cartList: cartList,totalOrderAmount: amount,shippingFee: shippingAmount-freeDeliveryAmountDiscount, discount: discount,
-                              tax: tax, onlyDigital: sellerGroupList.length != totalPhysical,hasPhysical: totalPhysical > 0,
+                              cartList: cartList,
+                              totalOrderAmount: amount,
+                             // shippingFee: shippingAmount-freeDeliveryAmountDiscount,
+                              shippingFee: _deliveryFee,
+                              shipingMethodId: _selectedDeliveryMethod["id"].toString(),
+                              discount: discount,
+                              tax: tax, onlyDigital: sellerGroupList.length != totalPhysical,hasPhysical: totalPhysical > 0, selectedDeliveryMethod: _selectedDeliveryMethod,
                             )));
                           }
                       },
@@ -255,6 +282,8 @@ class CartScreenState extends State<CartScreen> {
               Expanded(child: Column(children: [
                 Expanded(child: RefreshIndicator(
                     onRefresh: () async {
+                      _sellerProductsList.clear();
+                      qty = 0;
                       if(Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
                         await Provider.of<CartProvider>(context, listen: false).getCartDataAPI(context);
                       }
@@ -263,11 +292,15 @@ class CartScreenState extends State<CartScreen> {
                       itemCount: sellerList.length,
                       padding: const EdgeInsets.all(0),
                       itemBuilder: (context, index) {
+
                         bool hasPhysical = false;
                         double totalCost = 0;
                         for(CartModel cart in cartProductList[index]) {
                           totalCost += (cart.price! - cart.discount!) * cart.quantity! + tax +shippingAmount;
+                          qty += cart.quantity!;
                         }
+
+                        print("my qty === ${qty}");
 
                         for(CartModel cart in cartProductList[index]) {
                           if(cart.productType == 'physical') {
@@ -277,6 +310,12 @@ class CartScreenState extends State<CartScreen> {
                           }
                         }
 
+                        for(var i =0; i< cartProductList[index].length; i++){
+                          _sellerProductsList.add(cartProductList[index][i].id!);
+                        }
+
+
+
                         return Container(color: (sellerGroupList[index].minimumOrderAmountInfo!> totalCost) ? Theme.of(context).colorScheme.error.withOpacity(.05):
                         index.floor().isOdd? Theme.of(context).colorScheme.onSecondaryContainer : Theme.of(context).canvasColor,
                           child: Padding(padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),
@@ -284,54 +323,40 @@ class CartScreenState extends State<CartScreen> {
                               sellerGroupList[index].shopInfo!.isNotEmpty ?
 
                               Padding(padding: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
-                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
                                     Expanded(
                                       child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
                                           child: Row(children: [
-                                              Flexible(child: Text(sellerGroupList[index].shopInfo!, maxLines: 1, overflow: TextOverflow.ellipsis,
-                                                    textAlign: TextAlign.start, style: textBold.copyWith(fontSize: Dimensions.fontSizeLarge,
-                                                      color: Provider.of<ThemeProvider>(context, listen: false).darkTheme? Theme.of(context).hintColor : Theme.of(context).primaryColor)),),
-                                              Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+                                              Flexible(
+                                                child: Text(sellerGroupList[index].shopInfo!, maxLines: 1, overflow: TextOverflow.ellipsis,
+                                                      textAlign: TextAlign.start, style: textBold.copyWith(fontSize: Dimensions.fontSizeLarge,
+                                                      color: Provider.of<ThemeProvider>(context, listen: false).darkTheme? Theme.of(context).hintColor : Theme.of(context).primaryColor)),
+                                              ),
+                                              Padding(
+                                                  padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
                                                 child: Text('(${cartProductList[index].length})',
-                                                  style: textBold.copyWith(color: Provider.of<ThemeProvider>(context, listen: false).darkTheme? Theme.of(context).hintColor : Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeLarge))),
+                                                  style: textBold.copyWith(color: Provider.of<ThemeProvider>(context, listen: false).darkTheme? Theme.of(context).hintColor : Theme.of(context).primaryColor, fontSize: Dimensions.fontSizeLarge))
+                                              ),
+                                            ])
+                                      )
+                                    ),
 
-                                            ]))),
+                        // _deliveryFee = double.parse("${_selectedDeliveryMethod["cost"]}");
 
-                                  SizedBox(width: 200, child: configProvider.configModel!.shippingMethod =='sellerwise_shipping' &&
+                                    SizedBox(
+                                      width: 200,
+                                      child: configProvider.configModel!.shippingMethod =='sellerwise_shipping' &&
                                       sellerGroupList[index].shippingType == 'order_wise' && hasPhysical ?
 
-                                  Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-                                    child: InkWell(onTap: () {
-                                      showModalBottomSheet(
-                                        context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
-                                        builder: (context) => ShippingMethodBottomSheet(groupId: sellerGroupList[index].cartGroupId,sellerIndex: index, sellerId: sellerGroupList[index].id),
-                                      );
-                                    },
-                                      child: Container(decoration: BoxDecoration(
-                                          border: Border.all(width: 0.5,color: Colors.grey),
-                                          borderRadius: const BorderRadius.all(Radius.circular(10))),
-                                        child: Padding(padding: const EdgeInsets.all(8.0),
-                                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                                           if(cart.shippingList == null || cart.shippingList![index].shippingMethodList == null || cart.chosenShippingList.isEmpty || cart.shippingList![index].shippingIndex == -1)
-                                            Row(
-                                              children: [
-                                                SizedBox(width: 15,height: 15, child: Image.asset(Images.delivery,color: Theme.of(context).textTheme.bodyLarge?.color)),
-                                                const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                                                Text(getTranslated('choose_shipping', context)!, style: textRegular, overflow: TextOverflow.ellipsis,maxLines: 1,),
-                                              ],
-                                            ),
-                                            Flexible(child: Text((cart.shippingList == null || cart.shippingList![index].shippingMethodList == null || cart.chosenShippingList.isEmpty || cart.shippingList![index].shippingIndex == -1) ? ''
-                                                : cart.shippingList![index].shippingMethodList![cart.shippingList![index].shippingIndex!].title.toString(),
-                                                style: titilliumSemiBold.copyWith(color: Theme.of(context).hintColor),
-                                                maxLines: 1, overflow: TextOverflow.ellipsis,textAlign: TextAlign.end)),
 
-
-                                           Icon(Icons.keyboard_arrow_down, color: Theme.of(context).primaryColor),
-                                          ]),
-                                        ),
-                                      ),
+                                      ///TODO: This is shipping method, i need to work here.
+                                     Center(child: Text("Point"),): const SizedBox(),
                                     ),
-                                  ) : const SizedBox(),)
+
+
+
                                   ],
                                 ),
                               ) : const SizedBox(),
@@ -370,7 +395,11 @@ class CartScreenState extends State<CartScreen> {
 
 
 
-                              Card(child: Container(padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
+
+
+                                //product show
+                                Card(
+                                  child: Container(padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
                                 decoration: BoxDecoration(color: Theme.of(context).highlightColor),
                                 child: Column(children: [
                                   ListView.builder(physics: const NeverScrollableScrollPhysics(),
@@ -378,7 +407,17 @@ class CartScreenState extends State<CartScreen> {
                                     padding: const EdgeInsets.all(0),
                                     itemCount: cartProductList[index].length,
                                     itemBuilder: (context, i) {
-                                    return CartWidget(cartModel: cartProductList[index][i],
+
+                                    //calculate the price
+                                      //_calculateDeliveryFee(cost: _selectedDeliveryMethod["cost"], index: cartProductList[index][i]);
+
+                                      ///TODO: Single Product
+
+                                      print("_sellerProductsList == ${_sellerProductsList}");
+
+
+                                    return CartWidget(
+                                      cartModel: cartProductList[index][i],
                                       index: cartProductIndexList[index][i],
                                       fromCheckout: widget.fromCheckout,
                                     );
@@ -388,7 +427,7 @@ class CartScreenState extends State<CartScreen> {
                                 ],
                                 ),
                               ),
-                              ),
+                                ),
                                 if(sellerGroupList[index].freeDeliveryOrderAmount?.status == 1 && hasPhysical)
                                 Padding(padding: const EdgeInsets.only(bottom : Dimensions.paddingSizeSmall,left: Dimensions.paddingSizeDefault,right: Dimensions.paddingSizeDefault, top: Dimensions.paddingSizeSmall),
                                   child: Row(children: [
@@ -423,12 +462,40 @@ class CartScreenState extends State<CartScreen> {
                   ),
                 ),
                 ( !onlyDigital && configProvider.configModel!.shippingMethod != 'sellerwise_shipping' && configProvider.configModel!.inhouseSelectedShippingType =='order_wise')?
-                InkWell(onTap: () {
+                InkWell(onTap: () async{
+                  _deliveryFee = 0.0;
 
-                    showModalBottomSheet(
-                      context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
-                      builder: (context) => const ShippingMethodBottomSheet(groupId: 'all_cart_group',sellerIndex: 0, sellerId: 1),
-                    );
+                    // showModalBottomSheet(
+                    //   context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
+                    //   builder: (context) => const ShippingMethodBottomSheet(groupId: 'all_cart_group',sellerIndex: 0, sellerId: 1),
+                    // );
+
+                  final dynamic selectedShippingMethod = await showModalBottomSheet(
+                    context: context,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => const ShippingMethodBottomSheet(groupId: 'all_cart_group',sellerIndex: 0, sellerId: 1),
+
+                    // builder: (context) => ShippingMethodBottomSheet(groupId: sellerGroupList[index].cartGroupId, sellerIndex: index, sellerId: sellerGroupList[index].id),
+                  );
+
+
+                  ///TODO: work
+                  // Handle the returned data
+                  if (selectedShippingMethod != null) {
+                    setState(() {
+                      _selectedDeliveryMethod = selectedShippingMethod;
+                      //delivery cost calculate
+
+                    });
+
+
+
+                    print("the total delivery charge is === ${_deliveryFee}");
+                    print("the total delivery charge is _sellerProductsList === ${_sellerProductsList}");
+                  } else {
+                    // No data received
+                    print("No shipping method selected");
+                  }
 
                   },
                   child: Padding(padding: const EdgeInsets.fromLTRB(Dimensions.paddingSizeDefault, 0,Dimensions.paddingSizeDefault, Dimensions.paddingSizeDefault),
@@ -437,19 +504,23 @@ class CartScreenState extends State<CartScreen> {
                       borderRadius: const BorderRadius.all(Radius.circular(10))),
                       child: Padding(padding: const EdgeInsets.all(8.0),
                         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                          Row(children: [
-                              SizedBox(width: 15,height: 15, child: Image.asset(Images.delivery, color: Theme.of(context).textTheme.bodyLarge?.color)),
-                              const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                              Text(getTranslated('choose_shipping', context)!, style: textRegular, overflow: TextOverflow.ellipsis,maxLines: 1,),
-                            ],),
-                          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                            Text((cart.shippingList == null ||cart.chosenShippingList.isEmpty || cart.shippingList!.isEmpty || cart.shippingList![0].shippingMethodList == null ||  cart.shippingList![0].shippingIndex == -1) ? ''
-                                : cart.shippingList![0].shippingMethodList![cart.shippingList![0].shippingIndex!].title.toString(),
-                              style: titilliumSemiBold.copyWith(color: Theme.of(context).hintColor),
-                              maxLines: 1, overflow: TextOverflow.ellipsis,),
-                            const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                            Icon(Icons.keyboard_arrow_down, color: Theme.of(context).primaryColor),
-                          ]),
+
+                          _selectedDeliveryMethod == null
+                              ?   Row(children: [
+                                  SizedBox(width: 15,height: 15, child: Image.asset(Images.delivery, color: Theme.of(context).textTheme.bodyLarge?.color)),
+                                  const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                  Text(getTranslated('choose_shipping', context)!, style: textRegular, overflow: TextOverflow.ellipsis,maxLines: 1,),
+                                  ],)
+                              :  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                                Text("${_selectedDeliveryMethod == null ? "" : "${_selectedDeliveryMethod["title"]} (Duration ${_selectedDeliveryMethod["duration"]}) "} ",
+                                style: titilliumSemiBold.copyWith(color: Theme.of(context).hintColor),
+                                maxLines: 1, overflow: TextOverflow.ellipsis,),
+                                const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                                Icon(Icons.keyboard_arrow_down, color: Theme.of(context).primaryColor),
+                                ]),
+
+
+
                         ]),
                       ),
                     ),
@@ -467,4 +538,13 @@ class CartScreenState extends State<CartScreen> {
       }
     );
   }
+
+
+  _calculateDeliveryFee({required String cost}){
+
+  }
+
+
+
+
 }

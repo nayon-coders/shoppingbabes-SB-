@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 
 class SearchProductWidget extends StatefulWidget {
 
-  const SearchProductWidget({Key? key, }) : super(key: key);
+  const SearchProductWidget({super.key, });
 
   @override
   State<SearchProductWidget> createState() => _SearchProductWidgetState();

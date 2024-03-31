@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 
 class BottomCartView extends StatefulWidget {
   final ProductDetailsModel? product;
-  const BottomCartView({Key? key, required this.product}) : super(key: key);
+  const BottomCartView({super.key, required this.product});
 
   @override
   State<BottomCartView> createState() => _BottomCartViewState();

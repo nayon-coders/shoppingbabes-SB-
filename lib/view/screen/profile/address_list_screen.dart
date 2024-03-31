@@ -15,7 +15,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/chat/widget/inbox_shimme
 import 'package:provider/provider.dart';
 
 class AddressListScreen extends StatefulWidget {
-  const AddressListScreen({Key? key}) : super(key: key);
+  const AddressListScreen({super.key});
 
   @override
   State<AddressListScreen> createState() => _AddressListScreenState();
