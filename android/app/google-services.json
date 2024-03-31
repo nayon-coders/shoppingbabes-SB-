@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "41772010",
+    "project_id": "shoppingbabsenayoncoders",
+    "storage_bucket": "shoppingbabsenayoncoders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41772010:android:ee83ab64d9f7dd4a228893",
+        "android_client_info": {
+          "package_name": "com.shoppingbabes.app.nayon.coders"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkhQI013CZ8hBO0yneljdKF_nsIl-Hmgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41772010:android:61fe1580b6790e43228893",
+        "android_client_info": {
+          "package_name": "com.shoppingbabes.sbuser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkhQI013CZ8hBO0yneljdKF_nsIl-Hmgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
