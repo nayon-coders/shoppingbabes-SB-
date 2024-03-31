@@ -72,6 +72,7 @@ dependencies:
   flutter_native_splash: ^2.3.2
   animations: ^2.0.8
   emoji_picker_flutter: ^1.6.2
+  change_app_package_name: ^1.1.0
 
 
 
