@@ -51,8 +51,8 @@ class CartScreenState extends State<CartScreen> {
 
   //get back from select the delivery
   var _selectedDeliveryMethod;
-  double _deliveryFee = 0.0;
   List<int> _sellerProductsList = [];
+  List _totalSellerProducts = [];
   int qty = 0;
 
 
@@ -63,10 +63,12 @@ class CartScreenState extends State<CartScreen> {
         return Consumer<CartProvider>(builder: (context, cart, child) {
           _sellerProductsList.clear();
           qty = 0;
+          List<CartModel> _totalProducts =[];
           double amount = 0.0;
           double shippingAmount = 0.0;
           double discount = 0.0;
           double tax = 0.0;
+          double _deliveryFee = 0.0;
           int totalQuantity = 0;
           int totalPhysical = 0;
           bool onlyDigital= true;
@@ -74,7 +76,7 @@ class CartScreenState extends State<CartScreen> {
           cartList.addAll(cart.cartList);
 
           for(CartModel cart in cartList) {
-
+            _totalProducts.add(cart);
             if(cart.productType == "physical"){
               onlyDigital = false;
             }
@@ -187,10 +189,22 @@ class CartScreenState extends State<CartScreen> {
                           double total = 0;
                           _deliveryFee = 0.0;
 
-                          for(var i in sellerGroupList){
-                            _deliveryFee = double.parse("${_selectedDeliveryMethod["cost"]}");
+                          for(var j in sellerGroupList){
                           }
-                          _deliveryFee = _deliveryFee + (double.parse("${_selectedDeliveryMethod["cost"]}") / 2) * qty;
+
+                          for(var i = 0; i< sellerList.length; i++){
+                            print("total seller list === ${sellerList.length}");
+                            _deliveryFee = _deliveryFee + double.parse("${_selectedDeliveryMethod["cost"]}");
+
+                            for(var j =1; j<cartProductList[i].length; j++){
+                              print("total seller product list === ${cartProductList[i].length}");
+                              _deliveryFee = _deliveryFee + (double.parse("${_selectedDeliveryMethod["cost"]}")/2) * int.parse("${cartProductList[i][j].quantity}");
+
+                            }
+                          }
+
+
+
 
 
                            if(configProvider.configModel!.shippingMethod =='sellerwise_shipping'){
@@ -311,8 +325,18 @@ class CartScreenState extends State<CartScreen> {
                         }
 
                         for(var i =0; i< cartProductList[index].length; i++){
+                          print("cartProductList[index].length == ${cartProductList[index].length -1 }");
+                          //add the shiping method
+                         // _totalProducts.add(cartProductList[index][i]);
+
+                          //_deliveryFee = _deliveryFee + (double.parse("${_selectedDeliveryMethod["cost"]}") / 2 );
+
+
+
                           _sellerProductsList.add(cartProductList[index][i].id!);
                         }
+
+
 
 
 
@@ -464,12 +488,7 @@ class CartScreenState extends State<CartScreen> {
                 ( !onlyDigital && configProvider.configModel!.shippingMethod != 'sellerwise_shipping' && configProvider.configModel!.inhouseSelectedShippingType =='order_wise')?
                 InkWell(onTap: () async{
                   _deliveryFee = 0.0;
-
-                    // showModalBottomSheet(
-                    //   context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
-                    //   builder: (context) => const ShippingMethodBottomSheet(groupId: 'all_cart_group',sellerIndex: 0, sellerId: 1),
-                    // );
-
+                  _selectedDeliveryMethod = null;
                   final dynamic selectedShippingMethod = await showModalBottomSheet(
                     context: context,
                     backgroundColor: Colors.transparent,

@@ -10,6 +10,8 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/no_internet_screen.d
 import 'package:flutter_sixvalley_ecommerce/view/screen/address/widget/address_list_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../../data/model/response/address_model.dart';
+import '../../../provider/location_provider.dart';
 import 'add_new_address_screen.dart';
 class SavedAddressListScreen extends StatefulWidget {
   final bool fromGuest;
@@ -23,6 +25,8 @@ class SavedAddressListScreen extends StatefulWidget {
 class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
 
   initState(){
+    Provider.of<LocationProvider>(context, listen: false).getRestrictedDeliveryZipList(context);
+
     print("rider === ${widget.isRider}");
   }
 
@@ -41,28 +45,84 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
             child: Column(
               children: [
                  profile.addressList.isNotEmpty ?  SizedBox(
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: profile.addressList.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
-                        Navigator.pop(context);
-                        },
-                        child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-                          child: Container(
-                            margin: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: ColorResources.getIconBg(context),
-                              border: index == Provider.of<OrderProvider>(context).addressIndex ? Border.all(width: 2, color: Theme.of(context).primaryColor) : null,
+                  child:  Consumer<LocationProvider>(
+                      builder: (context, locationProvider, child) {
+                        List<AddressModel> _riderAddress = [];
+                        List<AddressModel> _regularAddress = [];
+                        List zipCode = [];
+                        if(widget.isRider){
+                          for(var i in  locationProvider.restrictedZipList){
+                            zipCode.add(i.zipcode.toString());
+                          }
+                        }else{
+                          zipCode.clear();
+                        }
+
+                        if( profile.addressList.isNotEmpty){
+                          for(var i in  profile.addressList){
+                            if(zipCode.isNotEmpty && zipCode.contains(i.zip.toString())){
+                              _riderAddress.add(i);
+                            }
+                          }
+                        }
+
+                        print("zipCode === $zipCode");
+                      return _riderAddress.isNotEmpty
+                          ? ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: _riderAddress.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+
+
+                          return  InkWell(
+                            onTap: () {Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
+                            Navigator.pop(context);
+                            },
+                            child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
+                              child: Container(
+                                margin: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: ColorResources.getIconBg(context),
+                                  border: index == Provider.of<OrderProvider>(context).addressIndex ? Border.all(width: 2, color: Theme.of(context).primaryColor) : null,
+                                ),
+                                child:  AddressListPage(
+                                    address:  profile.addressList[index]
+                                ),
+                              ),
                             ),
-                            child: AddressListPage(address: profile.addressList[index]),
-                          ),
-                        ),
+                          );
+                        },
+                      )
+                          : ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: profile.addressList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+
+
+                          return  InkWell(
+                            onTap: () {Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
+                            Navigator.pop(context);
+                            },
+                            child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
+                              child: Container(
+                                margin: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: ColorResources.getIconBg(context),
+                                  border: index == Provider.of<OrderProvider>(context).addressIndex ? Border.all(width: 2, color: Theme.of(context).primaryColor) : null,
+                                ),
+                                child:  AddressListPage(
+                                    address:  profile.addressList[index]
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       );
-                    },
+                    }
                   ),
                 )  : Padding(
                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),

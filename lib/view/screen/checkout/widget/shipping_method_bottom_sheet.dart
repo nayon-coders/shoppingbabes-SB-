@@ -24,7 +24,7 @@ class ShippingMethodBottomSheet extends StatefulWidget {
 }
 
 class ShippingMethodBottomSheetState extends State<ShippingMethodBottomSheet> {
-  int selectedIndex = 0;
+  int selectedIndex = -1;
   List _shippingList = [];
   List _selectedShippingList = [];
   Future? _getShippingFuture;
