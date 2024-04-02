@@ -42,32 +42,32 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
       body: SafeArea(child: Consumer<ProfileProvider>(
         builder: (context, profile, child) {
           return SingleChildScrollView(
-            child: Column(
-              children: [
-                 profile.addressList.isNotEmpty ?  SizedBox(
-                  child:  Consumer<LocationProvider>(
-                      builder: (context, locationProvider, child) {
-                        List<AddressModel> _riderAddress = [];
-                        List<AddressModel> _regularAddress = [];
-                        List zipCode = [];
-                        if(widget.isRider){
-                          for(var i in  locationProvider.restrictedZipList){
-                            zipCode.add(i.zipcode.toString());
-                          }
-                        }else{
-                          zipCode.clear();
-                        }
+            child: Consumer<LocationProvider>(
+                builder: (context, locationProvider, child) {
+                  List<AddressModel> _riderAddress = [];
+                  List<AddressModel> _regularAddress = [];
+                  List zipCode = [];
 
-                        if( profile.addressList.isNotEmpty){
-                          for(var i in  profile.addressList){
-                            if(zipCode.isNotEmpty && zipCode.contains(i.zip.toString())){
-                              _riderAddress.add(i);
-                            }
-                          }
-                        }
+                  for(var i in locationProvider.restrictedZipList){
+                    print("rider zip code === ${i.zipcode}");
+                    zipCode.add(i.zipcode.toString());
+                  }
 
-                        print("zipCode === $zipCode");
-                      return _riderAddress.isNotEmpty
+                  //get the al zip code
+                  for(var i in profile.addressList){
+
+                    if(zipCode.contains(i.zip.toString())){
+                      print("i.zip.toString() === ${i.zip.toString()}");
+                      print("i.zip.toString() === ${i.address.toString()}");
+                      _riderAddress.add(i);
+                    }
+                  }
+
+
+                return Column(
+                  children: [
+                    profile.addressList.isNotEmpty ?  SizedBox(
+                      child: _riderAddress.isNotEmpty
                           ? ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: _riderAddress.length,
@@ -121,22 +121,22 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
                             ),
                           );
                         },
-                      );
-                    }
-                  ),
-                )  : Padding(
-                   padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),
-                  child: Center(
-                    child: Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
-                      child: const NoInternetOrDataScreen(isNoInternet: false,
-                        message: 'no_address_found',
-                        icon: Images.noAddress,)
+                      ),
+                    )  : Padding(
+                       padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),
+                      child: Center(
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
+                          child: const NoInternetOrDataScreen(isNoInternet: false,
+                            message: 'no_address_found',
+                            icon: Images.noAddress,)
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              }
             ),
           );
         },

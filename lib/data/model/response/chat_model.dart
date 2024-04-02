@@ -27,12 +27,12 @@ class Chat {
   int? adminId;
   int? deliveryManId;
   String? message;
-  int? sentByCustomer;
-  int? sentBySeller;
-  int? sentByAdmin;
-  int? sentByDeliveryMan;
-  int? seenByCustomer;
-  int? status;
+  bool? sentByCustomer;
+  bool? sentBySeller;
+  bool? sentByAdmin;
+  bool? sentByDeliveryMan;
+  bool? seenByCustomer;
+  bool? status;
   String? createdAt;
   String? updatedAt;
   SellerInfo? sellerInfo;
