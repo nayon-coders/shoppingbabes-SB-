@@ -3,8 +3,8 @@
   String? _title;
   String? _startDate;
   String? _endDate;
-  int? _status;
-  int? _featured;
+  bool? _status;
+  bool? _featured;
   String? _backgroundColor;
   String? _textColor;
   String? _banner;
@@ -19,8 +19,8 @@
         String? title,
         String? startDate,
         String? endDate,
-        int? status,
-        int? featured,
+        bool? status,
+        bool? featured,
         String? backgroundColor,
         String? textColor,
         String? banner,
@@ -49,8 +49,8 @@
   String? get title => _title;
   String? get startDate => _startDate;
   String? get endDate => _endDate;
-  int? get status => _status;
-  int? get featured => _featured;
+  bool? get status => _status;
+  bool? get featured => _featured;
   String? get backgroundColor => _backgroundColor;
   String? get textColor => _textColor;
   String? get banner => _banner;

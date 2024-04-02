@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 
 class ShopInfoWidget extends StatelessWidget {
   final bool vacationIsOn;
-  final int temporaryClose;
+  final bool temporaryClose;
   final String sellerName;
   final int sellerId;
   final String banner;

@@ -142,10 +142,10 @@ class Shop {
   String? _createdAt;
   String? _updatedAt;
   String? _banner;
-  int? _temporaryClose;
+  bool? _temporaryClose;
   String? _vacationEndDate;
   String? _vacationStartDate;
-  int? _vacationStatus;
+  bool? _vacationStatus;
 
   Shop(
       {int? id,
@@ -157,10 +157,10 @@ class Shop {
         String? createdAt,
         String? updatedAt,
         String? banner,
-        int? temporaryClose,
+        bool? temporaryClose,
         String? vacationEndDate,
         String? vacationStartDate,
-        int? vacationStatus
+        bool? vacationStatus
       }) {
     if (id != null) {
       _id = id;
@@ -204,10 +204,10 @@ class Shop {
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
   String? get banner => _banner;
-  int? get temporaryClose => _temporaryClose;
+  bool? get temporaryClose => _temporaryClose;
   String? get vacationEndDate => _vacationEndDate;
   String? get vacationStartDate => _vacationStartDate;
-  int? get vacationStatus => _vacationStatus;
+  bool? get vacationStatus => _vacationStatus;
 
 
   Shop.fromJson(Map<String, dynamic> json) {
@@ -221,11 +221,11 @@ class Shop {
     _updatedAt = json['updated_at'];
     _banner = json['banner'];
     //_temporaryClose = json['temporary_close'] != null? json['temporary_close']: json['temporary_close'];
-    _temporaryClose = 0;
+    _temporaryClose = json['temporary_close'];
     _vacationEndDate = json['vacation_end_date'];
     _vacationStartDate = json['vacation_start_date'];
     //_vacationStatus = json['vacation_status'] != null? int.parse(json['vacation_status'].toString()):0;
-    _vacationStatus = 0;
+    _vacationStatus = json['vacation_status'] ;
   }
 
   Map<String, dynamic> toJson() {

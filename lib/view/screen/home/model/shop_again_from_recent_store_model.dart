@@ -50,7 +50,7 @@ class Shop {
   int? sellerId;
   String? name;
   String? image;
-  int? temporaryClose;
+  bool? temporaryClose;
   String? banner;
 
   Shop(
@@ -67,7 +67,7 @@ class Shop {
     sellerId = int.parse(json['seller_id'].toString());
     name = json['name'];
     image = json['image'];
-    temporaryClose = int.parse(json['temporary_close'].toString());
+    temporaryClose = json['temporary_close'];
     banner = json['banner'];
   }
 }

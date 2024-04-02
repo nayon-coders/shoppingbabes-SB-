@@ -33,8 +33,8 @@ class Shop {
   String? vacationStartDate;
   String? vacationEndDate;
   String? vacationNote;
-  int? vacationStatus;
-  int? temporaryClose;
+  bool? vacationStatus;
+  bool? temporaryClose;
   String? createdAt;
   String? updatedAt;
   String? banner;
@@ -63,8 +63,8 @@ class Shop {
     vacationStartDate = json['vacation_start_date'];
     vacationEndDate = json['vacation_end_date'];
     vacationNote = json['vacation_note'];
-    vacationStatus = int.parse(json['vacation_status'].toString());
-    temporaryClose = int.parse(json['temporary_close'].toString());
+    vacationStatus = json['vacation_status'];
+    temporaryClose = json['temporary_close'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     banner = json['banner'];

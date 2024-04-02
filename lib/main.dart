@@ -41,6 +41,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import 'di_container.dart' as di;
+import 'firebase_options.dart';
 import 'helper/custom_delegate.dart';
 import 'localization/app_localization.dart';
 import 'notification/notification_helper.dart';
@@ -56,7 +57,9 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
   await di.init();
 

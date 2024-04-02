@@ -121,7 +121,7 @@ class BannerProvider extends ChangeNotifier {
         Navigator.push(context, MaterialPageRoute(builder: (_) => TopSellerProductScreen(
           sellerId: id,
           temporaryClose: Provider.of<TopSellerProvider>(context,listen: false).topSellerList?[tIndex].shop?.temporaryClose,
-          vacationStatus: Provider.of<TopSellerProvider>(context,listen: false).topSellerList?[tIndex].shop?.vacationStatus,
+          vacationStatus: Provider.of<TopSellerProvider>(context,listen: false).topSellerList?[tIndex].shop!.vacationStatus,
           vacationEndDate: Provider.of<TopSellerProvider>(context,listen: false).topSellerList?[tIndex].shop?.vacationEndDate,
           vacationStartDate: Provider.of<TopSellerProvider>(context,listen: false).topSellerList?[tIndex].shop?.vacationStartDate,
           name: Provider.of<TopSellerProvider>(context,listen: false).topSellerList?[tIndex].shop?.name,

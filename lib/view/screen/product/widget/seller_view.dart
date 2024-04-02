@@ -50,7 +50,7 @@ class SellerView extends StatelessWidget {
                           child: InkWell(
                             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => TopSellerProductScreen(
                               sellerId: seller.sellerModel?.seller?.id,
-                              temporaryClose: seller.sellerModel?.seller?.shop?.temporaryClose,
+                              temporaryClose: seller.sellerModel?.seller?.shop!.temporaryClose,
                               vacationStatus: seller.sellerModel?.seller?.shop?.vacationStatus,
                               vacationEndDate: seller.sellerModel?.seller?.shop?.vacationEndDate,
                               vacationStartDate: seller.sellerModel?.seller?.shop?.vacationStartDate,

@@ -182,7 +182,7 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                             customerId: Provider.of<AuthProvider>(context,
                                         listen: false)
                                     .isLoggedIn()
-                                ? profileProvider.userInfoModel?.id.toString()
+                                ? profileProvider.userInfoModel!.id.toString()
                                 : Provider.of<AuthProvider>(context,
                                         listen: false)
                                     .getGuestToken(),

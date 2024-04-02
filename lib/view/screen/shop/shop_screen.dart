@@ -20,8 +20,8 @@ import 'package:provider/provider.dart';
 
 class TopSellerProductScreen extends StatefulWidget {
   final int? sellerId;
-  final int? temporaryClose;
-  final int? vacationStatus;
+  final bool? temporaryClose;
+  final bool? vacationStatus;
   final String? vacationEndDate;
   final String? vacationStartDate;
   final String? name;
@@ -91,7 +91,8 @@ class _TopSellerProductScreenState extends State<TopSellerProductScreen> with Ti
                   sellerId: widget.sellerId!,
                   banner: widget.banner ?? '',
                   shopImage: widget.image ?? '',
-                  temporaryClose: widget.temporaryClose!),
+                  temporaryClose: widget.temporaryClose!
+              ),
             ),
             SliverPersistentHeader(pinned: true,
                 delegate: SliverDelegate(
