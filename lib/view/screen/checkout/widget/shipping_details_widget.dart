@@ -22,6 +22,9 @@ class ShippingDetailsWidget extends StatelessWidget {
         builder: (context, shipping,_) {
           return Consumer<ProfileProvider>(
             builder: (context, profileProvider, _) {
+              if(isRider){
+                profileProvider.addressList.clear();
+              }
               return Container(padding: const EdgeInsets.fromLTRB(Dimensions.paddingSizeSmall, Dimensions.paddingSizeSmall, Dimensions.paddingSizeSmall,0),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   hasPhysical?
@@ -70,7 +73,7 @@ class ShippingDetailsWidget extends StatelessWidget {
                                   Text(getTranslated('add_your_address', context)??'',
                                     style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                                     maxLines: 3, overflow: TextOverflow.fade,
-                                  ):Column(children: [
+                                  ) :  Column(children: [
                                     AddressInfoItem(icon: Images.user, title: profileProvider.addressList[shipping.addressIndex!].contactPersonName??''),
                                     AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[shipping.addressIndex!].phone??''),
                                     AddressInfoItem(icon: Images.address, title: profileProvider.addressList[shipping.addressIndex!].address??''),
