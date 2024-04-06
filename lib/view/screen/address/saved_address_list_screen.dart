@@ -76,8 +76,9 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
 
 
                           return  InkWell(
-                            onTap: () {Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
-                            Navigator.pop(context);
+                            onTap: () {
+                              Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
+                              Navigator.pop(context, index);
                             },
                             child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
                               child: Container(
