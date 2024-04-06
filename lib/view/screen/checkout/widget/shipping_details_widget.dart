@@ -14,17 +14,22 @@ class ShippingDetailsWidget extends StatelessWidget {
   final bool hasPhysical;
   final bool billingAddress;
   final bool isRider;
-  const ShippingDetailsWidget({super.key, required this.hasPhysical, required this.billingAddress, this.isRider = false});
+   ShippingDetailsWidget({super.key, required this.hasPhysical, required this.billingAddress, this.isRider = false});
 
   @override
   Widget build(BuildContext context) {
+    var _selectedIndex = null;
+    // Provider.of<OrderProvider>(context, listen: false).removeAddressIndex();
     return Consumer<OrderProvider>(
         builder: (context, shipping,_) {
+          print("_selectedIndex  init === ${_selectedIndex}");
+          // if(shipping.addressIndex != null){
+          //   Provider.of<OrderProvider>(context, listen: false).removeAddressIndex();
+          // }else{
+          //   _selectedIndex = shipping.addressIndex!;
+          // }
           return Consumer<ProfileProvider>(
             builder: (context, profileProvider, _) {
-              if(isRider){
-                profileProvider.addressList.clear();
-              }
               return Container(padding: const EdgeInsets.fromLTRB(Dimensions.paddingSizeSmall, Dimensions.paddingSizeSmall, Dimensions.paddingSizeSmall,0),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   hasPhysical?
@@ -49,8 +54,13 @@ class ShippingDetailsWidget extends StatelessWidget {
 
 
                                   InkWell(
-                                    onTap: () => Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (BuildContext context) =>  SavedAddressListScreen(isRider: isRider))),
+                                    onTap: () async{
+                                      await Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (BuildContext context) =>  SavedAddressListScreen(isRider: isRider))).then((value) {
+                                            _selectedIndex = value;
+                                            print("_selectedIndex set ${_selectedIndex}");
+                                      });
+                                    },
                                     child: SizedBox(width: 20, child: Image.asset(Images.edit, scale: 3)),
                                   ),
 
@@ -69,16 +79,16 @@ class ShippingDetailsWidget extends StatelessWidget {
                                   const Divider(),
 
 
-                                (Provider.of<OrderProvider>(context,listen: false).addressIndex == null || Provider.of<ProfileProvider>(context, listen: false).addressList.isEmpty)?
+                                _selectedIndex == null ?
                                   Text(getTranslated('add_your_address', context)??'',
                                     style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                                     maxLines: 3, overflow: TextOverflow.fade,
-                                  ) :  Column(children: [
-                                    AddressInfoItem(icon: Images.user, title: profileProvider.addressList[shipping.addressIndex!].contactPersonName??''),
-                                    AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[shipping.addressIndex!].phone??''),
-                                    AddressInfoItem(icon: Images.address, title: profileProvider.addressList[shipping.addressIndex!].address??''),
+                                  ) : Column(children: [
+                                      AddressInfoItem(icon: Images.user, title: profileProvider.addressList[_selectedIndex].contactPersonName??''),
+                                      AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[_selectedIndex].phone??''),
+                                      AddressInfoItem(icon: Images.address, title: profileProvider.addressList[_selectedIndex].address??''),
 
-                                ],
+                                  ],
                                 ),
                               ]),
                             ],
