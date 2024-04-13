@@ -28,6 +28,8 @@ class _AddressListScreenState extends State<AddressListScreen> {
     Provider.of<ProfileProvider>(context, listen: false).initAddressTypeList(context);
     Provider.of<ProfileProvider>(context, listen: false).initAddressList();
     super.initState();
+
+    print("object---");
   }
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,8 @@ class _AddressListScreenState extends State<AddressListScreen> {
 
       body: Consumer<ProfileProvider>(
         builder: (context, profileProvider, child) {
-          return  !profileProvider.isLoading? profileProvider.shippingAddressList.isNotEmpty ?
+          print("profileProvider.addressList.length == ${profileProvider.addressList.length}");
+          return  !profileProvider.isLoading? profileProvider.addressList.isNotEmpty ?
           RefreshIndicator(
             onRefresh: () async {
               Provider.of<ProfileProvider>(context, listen: false).initAddressTypeList(context);
@@ -52,22 +55,22 @@ class _AddressListScreenState extends State<AddressListScreen> {
             backgroundColor: Theme.of(context).primaryColor,
             child: ListView.builder(
               padding: const EdgeInsets.all(0),
-              itemCount: profileProvider.shippingAddressList.length,
+              itemCount: profileProvider.addressList.length,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Card(child: Stack(children: [
                       Padding(padding: const EdgeInsets.symmetric(vertical: 5),
                         child: ListTile(
-                          title: Text('${getTranslated('address', context)} : ${profileProvider.shippingAddressList[index].address}'),
+                          title: Text('${getTranslated('address', context)} : ${profileProvider.addressList[index].address}'),
                           subtitle: Row(children: [
-                              Text('${getTranslated('city', context)} : ${profileProvider.shippingAddressList[index].city ?? ""}'),
+                              Text('${getTranslated('city', context)} : ${profileProvider.addressList[index].city ?? ""}'),
                               const SizedBox(width: Dimensions.paddingSizeDefault),
-                              Text('${getTranslated('zip', context)} : ${profileProvider.shippingAddressList[index].zip ?? ""}'),
+                              Text('${getTranslated('zip', context)} : ${profileProvider.addressList[index].zip ?? ""}'),
                             ],
                           ),
                           trailing: InkWell(onTap: (){
                             showModalBottomSheet(backgroundColor: Colors.transparent, context: context, builder: (_)=>  RemoveFromAddressBottomSheet(
-                              addressId: profileProvider.shippingAddressList[index].id!, index: index,));
+                              addressId: profileProvider.addressList[index].id!, index: index,));
 
                           },
                               child: const Padding(
@@ -86,7 +89,7 @@ class _AddressListScreenState extends State<AddressListScreen> {
                               color: Theme.of(context).primaryColor,
                             ),
                             child: Padding(padding: const EdgeInsets.all(7.0),
-                              child: Text(profileProvider.shippingAddressList[index].isBilling ==0?
+                              child: Text(profileProvider.addressList[index].isBilling ==0?
                           getTranslated('shipping', context)!:getTranslated('billing', context)!,
                                 style: textRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Provider.of<ThemeProvider>(context).darkTheme?Colors.white : Theme.of(context).cardColor),),),),
                         ),

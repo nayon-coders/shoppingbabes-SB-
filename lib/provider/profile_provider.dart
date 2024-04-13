@@ -47,7 +47,6 @@ class ProfileProvider extends ChangeNotifier {
         _isLoading = true;
       }
     ApiResponse apiResponse = await profileRepo!.getAllAddress();
-      print("get locaton list status === ${apiResponse.response!.statusCode}");
 
       if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       _addressList = [];

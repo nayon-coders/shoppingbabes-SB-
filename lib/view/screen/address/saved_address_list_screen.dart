@@ -27,7 +27,8 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
   initState(){
     Provider.of<LocationProvider>(context, listen: false).getRestrictedDeliveryZipList(context);
 
-    print("rider === ${widget.isRider}");
+    print("object");
+
   }
 
   @override
@@ -57,8 +58,6 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
                   for(var i in profile.addressList){
 
                     if(zipCode.contains(i.zip.toString())){
-                      print("i.zip.toString() === ${i.zip.toString()}");
-                      print("i.zip.toString() === ${i.address.toString()}");
                       _riderAddress.add(i);
                     }
                   }
@@ -76,8 +75,9 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
 
 
                           return  InkWell(
-                            onTap: () {Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
-                            Navigator.pop(context);
+                            onTap: () {
+                              Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
+                              Navigator.pop(context, index);
                             },
                             child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
                               child: Container(
@@ -104,7 +104,7 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
 
                           return  InkWell(
                             onTap: () {Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
-                            Navigator.pop(context);
+                              Navigator.pop(context, index);
                             },
                             child: Padding(padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
                               child: Container(

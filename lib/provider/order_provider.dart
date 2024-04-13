@@ -262,6 +262,10 @@ class OrderProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void removeAddressIndex() {
+    _addressIndex = null;
+    notifyListeners();
+  }
   void setBillingAddressIndex(int index) {
     _billingAddressIndex = index;
     notifyListeners();
@@ -664,4 +668,8 @@ Future<void> _launchUrl(Uri url) async {
   if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
     throw 'Could not launch $url';
   }
+
+
+
+
 }

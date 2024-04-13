@@ -10,24 +10,35 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/address/saved_billing_ad
 import 'package:provider/provider.dart';
 
 
-class ShippingDetailsWidget extends StatelessWidget {
+class ShippingDetailsWidget extends StatefulWidget {
   final bool hasPhysical;
   final bool billingAddress;
   final bool isRider;
-  const ShippingDetailsWidget({super.key, required this.hasPhysical, required this.billingAddress, this.isRider = false});
+   ShippingDetailsWidget({super.key, required this.hasPhysical, required this.billingAddress, this.isRider = false});
+
+  @override
+  State<ShippingDetailsWidget> createState() => _ShippingDetailsWidgetState();
+}
+
+class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
+  var index  ;
 
   @override
   Widget build(BuildContext context) {
+    print("index === ${index}");
+    // Provider.of<OrderProvider>(context, listen: false).removeAddressIndex();
     return Consumer<OrderProvider>(
         builder: (context, shipping,_) {
+          // if(shipping.addressIndex != null){
+          //   Provider.of<OrderProvider>(context, listen: false).removeAddressIndex();
+          // }else{
+          //   _selectedIndex = shipping.addressIndex!;
+          // }
           return Consumer<ProfileProvider>(
             builder: (context, profileProvider, _) {
-              if(isRider){
-                profileProvider.addressList.clear();
-              }
               return Container(padding: const EdgeInsets.fromLTRB(Dimensions.paddingSizeSmall, Dimensions.paddingSizeSmall, Dimensions.paddingSizeSmall,0),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  hasPhysical?
+                  widget.hasPhysical?
                       Card(child: Container(
                           padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
                           decoration: BoxDecoration(
@@ -49,8 +60,15 @@ class ShippingDetailsWidget extends StatelessWidget {
 
 
                                   InkWell(
-                                    onTap: () => Navigator.of(context).push(
-                                        MaterialPageRoute(builder: (BuildContext context) =>  SavedAddressListScreen(isRider: isRider))),
+                                    onTap: () async{
+                                      await Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (BuildContext context) =>  SavedAddressListScreen(isRider: widget.isRider))).then((value) {
+                                           setState(() {
+                                             index = value;
+                                           });
+                                            print("index === ${index}");
+                                      });
+                                    },
                                     child: SizedBox(width: 20, child: Image.asset(Images.edit, scale: 3)),
                                   ),
 
@@ -59,26 +77,26 @@ class ShippingDetailsWidget extends StatelessWidget {
                               const SizedBox(height: Dimensions.paddingSizeDefault,),
 
                               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                  Text((Provider.of<OrderProvider>(context,listen: false).addressIndex == null || Provider.of<ProfileProvider>(context, listen: false).addressList.isEmpty) ?
+                                  Text((index == null || Provider.of<ProfileProvider>(context, listen: false).addressList.isEmpty) ?
                                     '${getTranslated('address_type', context)}' :
-                                    Provider.of<ProfileProvider>(context, listen: false).addressList[
-                                    Provider.of<OrderProvider>(context, listen: false).addressIndex!].addressType!.capitalize(),
+                                    Provider.of<ProfileProvider>(context, listen: false).addressList[index].addressType!.capitalize(),
                                     style: titilliumBold.copyWith(fontSize: Dimensions.fontSizeLarge),
                                     maxLines: 3, overflow: TextOverflow.fade,
                                   ),
                                   const Divider(),
 
 
-                                (Provider.of<OrderProvider>(context,listen: false).addressIndex == null || Provider.of<ProfileProvider>(context, listen: false).addressList.isEmpty)?
-                                  Text(getTranslated('add_your_address', context)??'',
+                                (index == null || Provider.of<ProfileProvider>(context, listen: false).addressList.isEmpty)?
+
+                                Text(getTranslated('add_your_address', context)??'',
                                     style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                                     maxLines: 3, overflow: TextOverflow.fade,
-                                  ) :  Column(children: [
-                                    AddressInfoItem(icon: Images.user, title: profileProvider.addressList[shipping.addressIndex!].contactPersonName??''),
-                                    AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[shipping.addressIndex!].phone??''),
-                                    AddressInfoItem(icon: Images.address, title: profileProvider.addressList[shipping.addressIndex!].address??''),
+                                  ) : Column(children: [
+                                      AddressInfoItem(icon: Images.user, title: profileProvider.addressList[3].contactPersonName??''),
+                                      AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[3].phone??''),
+                                      AddressInfoItem(icon: Images.address, title: profileProvider.addressList[3].address??''),
 
-                                ],
+                                  ],
                                 ),
                               ]),
                             ],
@@ -86,8 +104,8 @@ class ShippingDetailsWidget extends StatelessWidget {
                         ),
                       ): const SizedBox(),
 
-                      SizedBox(height: hasPhysical? Dimensions.paddingSizeSmall:0),
-                      billingAddress?
+                      SizedBox(height: widget.hasPhysical? Dimensions.paddingSizeSmall:0),
+                      widget.billingAddress?
                       Card(child: Container(
                           padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
                           decoration: BoxDecoration(
