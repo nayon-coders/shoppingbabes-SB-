@@ -25,7 +25,6 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print("index === ${index}");
     // Provider.of<OrderProvider>(context, listen: false).removeAddressIndex();
     return Consumer<OrderProvider>(
         builder: (context, shipping,_) {
