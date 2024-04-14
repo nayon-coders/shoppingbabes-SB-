@@ -194,13 +194,25 @@ class CartScreenState extends State<CartScreen> {
 
                           for(var i = 0; i< sellerList.length; i++){
                             print("total seller list === ${sellerList.length}");
-                            _deliveryFee = _deliveryFee + double.parse("${_selectedDeliveryMethod["cost"]}");
 
-                            for(var j =1; j<cartProductList[i].length; j++){
+                            for(var j =0; j<cartProductList[i].length; j++){
                               print("total seller product list === ${cartProductList[i].length}");
-                              _deliveryFee = _deliveryFee + (double.parse("${_selectedDeliveryMethod["cost"]}")/2) * int.parse("${cartProductList[i][j].quantity}");
+                              if(j == 0){
+                                _deliveryFee = _deliveryFee + double.parse("${_selectedDeliveryMethod["cost"]}");
+                              }
+                              if(j == 0 && cartProductList[i][0].quantity! > 1){
+                                _deliveryFee = _deliveryFee + ((double.parse("${_selectedDeliveryMethod["cost"]}")/2) * (int.parse("${cartProductList[i][0].quantity}") - 1) );
+                              }
+
 
                             }
+
+                          for(var j =1; j<cartProductList[i].length; j++) {
+                            _deliveryFee = _deliveryFee + ( (double.parse("${_selectedDeliveryMethod["cost"]}")/2) * (int.parse("${cartProductList[i][j].quantity}") ));
+
+                          }
+
+
                           }
 
 
