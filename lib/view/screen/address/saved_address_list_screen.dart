@@ -45,6 +45,7 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
           return SingleChildScrollView(
             child: Consumer<LocationProvider>(
                 builder: (context, locationProvider, child) {
+                  print("widget.isRider === ${widget.isRider}");
                   List<AddressModel> _riderAddress = [];
                   List<AddressModel> _regularAddress = [];
                   List zipCode = [];
@@ -55,25 +56,29 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
                   }
 
                   //get the al zip code
-                  for(var i in profile.addressList){
-
-                    if(zipCode.contains(i.zip.toString())){
-                      _riderAddress.add(i);
+                  if(widget.isRider){
+                    for(var i in profile.addressList) {
+                      if (zipCode.contains(i.zip.toString())) {
+                        print("_riderAddress === ${i.zip}");
+                        _riderAddress.add(i);
+                      }
                     }
+                  }else{
+                    _riderAddress.clear();
                   }
+
 
 
                 return Column(
                   children: [
                     profile.addressList.isNotEmpty ?  SizedBox(
-                      child: _riderAddress.isNotEmpty
+                      child: widget.isRider
+                          ? _riderAddress.isNotEmpty
                           ? ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: _riderAddress.length,
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
-
-
                           return  InkWell(
                             onTap: () {
                               Provider.of<OrderProvider>(context, listen: false).setAddressIndex(index);
@@ -88,13 +93,25 @@ class _SavedAddressListScreenState extends State<SavedAddressListScreen> {
                                   border: index == Provider.of<OrderProvider>(context).addressIndex ? Border.all(width: 2, color: Theme.of(context).primaryColor) : null,
                                 ),
                                 child:  AddressListPage(
-                                    address:  profile.addressList[index]
+                                    address:  _riderAddress[index]
                                 ),
                               ),
                             ),
                           );
                         },
                       )
+                          : Padding(
+                              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),
+                                child: Center(
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
+                                    child: const NoInternetOrDataScreen(isNoInternet: false,
+                                    message: 'no_address_found',
+                                    icon: Images.noAddress,)
+                                  ),
+                                ),
+                              )
                           : ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: profile.addressList.length,

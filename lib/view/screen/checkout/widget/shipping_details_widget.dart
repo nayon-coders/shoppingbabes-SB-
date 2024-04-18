@@ -91,9 +91,9 @@ class _ShippingDetailsWidgetState extends State<ShippingDetailsWidget> {
                                     style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                                     maxLines: 3, overflow: TextOverflow.fade,
                                   ) : Column(children: [
-                                      AddressInfoItem(icon: Images.user, title: profileProvider.addressList[3].contactPersonName??''),
-                                      AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[3].phone??''),
-                                      AddressInfoItem(icon: Images.address, title: profileProvider.addressList[3].address??''),
+                                      AddressInfoItem(icon: Images.user, title: profileProvider.addressList[index].contactPersonName??''),
+                                      AddressInfoItem(icon: Images.callIcon, title: profileProvider.addressList[index].phone??''),
+                                      AddressInfoItem(icon: Images.address, title: profileProvider.addressList[index].address??''),
 
                                   ],
                                 ),
